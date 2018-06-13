@@ -28,3 +28,6 @@
 [submodule "src/lib/u8g2"]
 	path = src/lib/u8g2
 	url = git@github.com:olikraus/u8g2.git
+[submodule "kicad/arduino-kicad-library"]
+	path = kicad/arduino-kicad-library
+	url = git@github.com:Alarm-Siren/arduino-kicad-library.git
