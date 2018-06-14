@@ -239,7 +239,7 @@ Text GLabel 3600 4550 0    60   Output ~ 0
 GND
 Text GLabel 3600 4650 0    60   Output ~ 0
 GND
-Text GLabel 3000 2700 3    60   Output ~ 0
+Text GLabel 3000 2700 3    60   Input ~ 0
 GND
 Text GLabel 2900 2700 3    60   Output ~ 0
 VCC
@@ -258,7 +258,7 @@ F 3 "" H 6300 2800 50  0001 C CNN
 $EndComp
 Text GLabel 6300 2800 1    60   Input ~ 0
 GND
-Text GLabel 6150 2550 3    60   Output ~ 0
+Text GLabel 6150 2550 3    60   Input ~ 0
 +5V
 Text GLabel 6950 3150 0    60   Input ~ 0
 D4
@@ -286,27 +286,27 @@ Text GLabel 6200 3850 2    60   Output ~ 0
 D9
 Text GLabel 6950 4350 0    60   Input ~ 0
 A4
-Text GLabel 6950 4450 0    60   Input ~ 0
+Text GLabel 6950 4450 0    60   Output ~ 0
 A5
-Text GLabel 3600 3750 0    60   Output ~ 0
+Text GLabel 3600 3750 0    60   Input ~ 0
 A5
 Text GLabel 3600 3850 0    60   Output ~ 0
 A4
-Text GLabel 2650 4850 2    60   Input ~ 0
+Text GLabel 2650 4850 2    60   Output ~ 0
 A2
-Text GLabel 3600 4050 0    60   Output ~ 0
+Text GLabel 3600 4050 0    60   Input ~ 0
 A2
-Text GLabel 2650 4250 2    60   Input ~ 0
+Text GLabel 2650 4250 2    60   Output ~ 0
 A0
-Text GLabel 3600 4250 0    60   Output ~ 0
+Text GLabel 3600 4250 0    60   Input ~ 0
 A0
 Text GLabel 2650 3550 2    60   Input ~ 0
 D3
 Text GLabel 6200 3250 2    60   Output ~ 0
 D3
-Text GLabel 2650 3050 2    60   Input ~ 0
+Text GLabel 2650 3050 2    60   Output ~ 0
 A1
-Text GLabel 3600 4150 0    60   Output ~ 0
+Text GLabel 3600 4150 0    60   Input ~ 0
 A1
 Text GLabel 3300 2700 3    60   Input ~ 0
 TX
@@ -334,4 +334,18 @@ Wire Wire Line
 	3200 4150 3200 4250
 Wire Wire Line
 	3200 4250 2650 4250
+NoConn ~ 6200 3150
+NoConn ~ 6200 3750
+NoConn ~ 6200 4050
+NoConn ~ 6200 4150
+NoConn ~ 6200 4250
+NoConn ~ 6200 4750
+NoConn ~ 6200 4850
+NoConn ~ 3600 3550
+NoConn ~ 3600 3650
+NoConn ~ 3600 3950
+NoConn ~ 3600 4350
+NoConn ~ 3600 4750
+NoConn ~ 2650 4650
+NoConn ~ 2650 4750
 $EndSCHEMATC
