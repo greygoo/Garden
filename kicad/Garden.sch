@@ -50,24 +50,24 @@ $EndDescr
 $Comp
 L Conn_01x02 J5
 U 1 1 5B1E97A2
-P 3650 2750
-F 0 "J5" H 3650 2850 50  0000 C CNN
-F 1 "Serial" H 3650 2550 50  0000 C CNN
-F 2 "Connectors_Molex:Molex_KK-6410-02_02x2.54mm_Straight" H 3650 2750 50  0001 C CNN
-F 3 "" H 3650 2750 50  0001 C CNN
-	1    3650 2750
+P 3300 2500
+F 0 "J5" H 3300 2600 50  0000 C CNN
+F 1 "Serial" H 3300 2300 50  0000 C CNN
+F 2 "Connectors_Molex:Molex_KK-6410-02_02x2.54mm_Straight" H 3300 2500 50  0001 C CNN
+F 3 "" H 3300 2500 50  0001 C CNN
+	1    3300 2500
 	0    -1   -1   0   
 $EndComp
 $Comp
 L Conn_01x02 J6
 U 1 1 5B1E97D9
-P 4000 5500
-F 0 "J6" H 4000 5600 50  0000 C CNN
-F 1 "Power" H 4000 5300 50  0000 C CNN
-F 2 "Connectors_Molex:Molex_KK-6410-02_02x2.54mm_Straight" H 4000 5500 50  0001 C CNN
-F 3 "" H 4000 5500 50  0001 C CNN
-	1    4000 5500
-	0    1    1    0   
+P 2900 2500
+F 0 "J6" H 2900 2600 50  0000 C CNN
+F 1 "Power" H 2900 2300 50  0000 C CNN
+F 2 "Connectors_Molex:Molex_KK-6410-02_02x2.54mm_Straight" H 2900 2500 50  0001 C CNN
+F 3 "" H 2900 2500 50  0001 C CNN
+	1    2900 2500
+	0    -1   -1   0   
 $EndComp
 $Comp
 L Conn_01x06 J7
@@ -116,67 +116,67 @@ $EndComp
 $Comp
 L Conn_01x03 J1
 U 1 1 5B1E9A4A
-P 2700 3150
-F 0 "J1" H 2700 3350 50  0000 C CNN
-F 1 "EC" H 2700 2950 50  0000 C CNN
-F 2 "Connectors_Molex:Molex_KK-6410-03_03x2.54mm_Straight" H 2700 3150 50  0001 C CNN
-F 3 "" H 2700 3150 50  0001 C CNN
-	1    2700 3150
+P 2450 3150
+F 0 "J1" H 2450 3350 50  0000 C CNN
+F 1 "EC" H 2450 2950 50  0000 C CNN
+F 2 "Connectors_Molex:Molex_KK-6410-03_03x2.54mm_Straight" H 2450 3150 50  0001 C CNN
+F 3 "" H 2450 3150 50  0001 C CNN
+	1    2450 3150
 	-1   0    0    1   
 $EndComp
 $Comp
 L Conn_01x03 J2
 U 1 1 5B1E9A93
-P 2700 3650
-F 0 "J2" H 2700 3850 50  0000 C CNN
-F 1 "TEMP" H 2700 3450 50  0000 C CNN
-F 2 "Connectors_Molex:Molex_KK-6410-03_03x2.54mm_Straight" H 2700 3650 50  0001 C CNN
-F 3 "" H 2700 3650 50  0001 C CNN
-	1    2700 3650
+P 2450 3650
+F 0 "J2" H 2450 3850 50  0000 C CNN
+F 1 "TEMP" H 2450 3450 50  0000 C CNN
+F 2 "Connectors_Molex:Molex_KK-6410-03_03x2.54mm_Straight" H 2450 3650 50  0001 C CNN
+F 3 "" H 2450 3650 50  0001 C CNN
+	1    2450 3650
 	-1   0    0    1   
 $EndComp
 $Comp
 L Conn_01x04 J3
 U 1 1 5B1E9AC4
-P 2700 4250
-F 0 "J3" H 2700 4450 50  0000 C CNN
-F 1 "DHT" H 2700 3950 50  0000 C CNN
-F 2 "Connectors_Molex:Molex_KK-6410-04_04x2.54mm_Straight" H 2700 4250 50  0001 C CNN
-F 3 "" H 2700 4250 50  0001 C CNN
-	1    2700 4250
+P 2450 4250
+F 0 "J3" H 2450 4450 50  0000 C CNN
+F 1 "DHT" H 2450 3950 50  0000 C CNN
+F 2 "Connectors_Molex:Molex_KK-6410-04_04x2.54mm_Straight" H 2450 4250 50  0001 C CNN
+F 3 "" H 2450 4250 50  0001 C CNN
+	1    2450 4250
 	-1   0    0    1   
 $EndComp
 $Comp
 L Conn_01x06 J4
 U 1 1 5B1E9AFD
-P 2700 4950
-F 0 "J4" H 2700 5250 50  0000 C CNN
-F 1 "PH" H 2700 4550 50  0000 C CNN
-F 2 "Connectors_Molex:Molex_KK-6410-06_06x2.54mm_Straight" H 2700 4950 50  0001 C CNN
-F 3 "" H 2700 4950 50  0001 C CNN
-	1    2700 4950
+P 2450 4950
+F 0 "J4" H 2450 5250 50  0000 C CNN
+F 1 "PH" H 2450 4550 50  0000 C CNN
+F 2 "Connectors_Molex:Molex_KK-6410-06_06x2.54mm_Straight" H 2450 4950 50  0001 C CNN
+F 3 "" H 2450 4950 50  0001 C CNN
+	1    2450 4950
 	-1   0    0    1   
 $EndComp
 $Comp
 L R R1
 U 1 1 5B1E9E60
-P 3100 3550
-F 0 "R1" V 3180 3550 50  0000 C CNN
-F 1 "470" V 3100 3550 50  0000 C CNN
-F 2 "Resistors_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P2.54mm_Vertical" V 3030 3550 50  0001 C CNN
-F 3 "" H 3100 3550 50  0001 C CNN
-	1    3100 3550
-	0    1    1    0   
+P 3050 3650
+F 0 "R1" V 3130 3650 50  0000 C CNN
+F 1 "470" V 3050 3650 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P2.54mm_Vertical" V 2980 3650 50  0001 C CNN
+F 3 "" H 3050 3650 50  0001 C CNN
+	1    3050 3650
+	-1   0    0    1   
 $EndComp
 $Comp
 L R R2
 U 1 1 5B1E9F15
-P 3100 4150
-F 0 "R2" V 3180 4150 50  0000 C CNN
-F 1 "1K" V 3100 4150 50  0000 C CNN
-F 2 "Resistors_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P2.54mm_Vertical" V 3030 4150 50  0001 C CNN
-F 3 "" H 3100 4150 50  0001 C CNN
-	1    3100 4150
+P 3050 4150
+F 0 "R2" V 3130 4150 50  0000 C CNN
+F 1 "1K" V 3050 4150 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P2.54mm_Vertical" V 2980 4150 50  0001 C CNN
+F 3 "" H 3050 4150 50  0001 C CNN
+	1    3050 4150
 	0    1    1    0   
 $EndComp
 $Comp
@@ -190,231 +190,148 @@ F 3 "" H 6700 7800 60  0001 C CNN
 	1    4900 4050
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2900 3550 2950 3550
-Wire Wire Line
-	2900 4150 2950 4150
-Wire Wire Line
-	6950 3150 6400 3150
-Wire Wire Line
-	6400 3150 6400 3350
-Wire Wire Line
-	6400 3350 6200 3350
-Wire Wire Line
-	6950 3250 6450 3250
-Wire Wire Line
-	6450 3250 6450 3450
-Wire Wire Line
-	6450 3450 6200 3450
-Wire Wire Line
-	6950 3350 6500 3350
-Wire Wire Line
-	6500 3350 6500 3550
-Wire Wire Line
-	6500 3550 6200 3550
-Wire Wire Line
-	6950 3450 6550 3450
-Wire Wire Line
-	6550 3450 6550 3650
-Wire Wire Line
-	6550 3650 6200 3650
-Wire Wire Line
-	6950 4050 6550 4050
-Wire Wire Line
-	6550 4050 6550 3950
-Wire Wire Line
-	6550 3950 6200 3950
 $Comp
 L +5V #PWR01
-U 1 1 5B1FAF7C
-P 3350 2700
-F 0 "#PWR01" H 3350 2550 50  0001 C CNN
-F 1 "+5V" H 3350 2840 50  0000 C CNN
-F 2 "" H 3350 2700 50  0001 C CNN
-F 3 "" H 3350 2700 50  0001 C CNN
-	1    3350 2700
+U 1 1 5B1FE22B
+P 6150 2550
+F 0 "#PWR01" H 6150 2400 50  0001 C CNN
+F 1 "+5V" H 6150 2690 50  0000 C CNN
+F 2 "" H 6150 2550 50  0001 C CNN
+F 3 "" H 6150 2550 50  0001 C CNN
+	1    6150 2550
 	1    0    0    -1  
 $EndComp
+Text GLabel 2650 3150 2    60   Input ~ 0
++5V
+Text GLabel 6950 3550 0    60   Output ~ 0
+GND
+Text GLabel 6950 3850 0    60   Output ~ 0
+GND
+Text GLabel 6950 4650 0    60   Output ~ 0
+GND
+Text GLabel 6950 5050 0    60   Output ~ 0
+GND
+Text GLabel 6950 3050 0    60   Input ~ 0
++5V
+Text GLabel 6950 3950 0    60   Input ~ 0
++5V
+Text GLabel 6950 4550 0    60   Input ~ 0
++5V
+Text GLabel 2650 3750 2    60   Input ~ 0
++5V
+Text GLabel 2650 4350 2    60   Input ~ 0
++5V
+Text GLabel 2650 5150 2    60   Input ~ 0
++5V
+Text GLabel 3600 4850 0    60   Output ~ 0
++5V
+Text GLabel 2650 5050 2    60   Output ~ 0
+GND
+Text GLabel 2650 4050 2    60   Output ~ 0
+GND
+Text GLabel 2650 4950 2    60   Output ~ 0
+GND
+Text GLabel 2650 3650 2    60   Output ~ 0
+GND
+Text GLabel 2650 3250 2    60   Output ~ 0
+GND
+Text GLabel 3600 4550 0    60   Output ~ 0
+GND
+Text GLabel 3600 4650 0    60   Output ~ 0
+GND
+Text GLabel 3000 2700 3    60   Output ~ 0
+GND
+Text GLabel 2900 2700 3    60   Output ~ 0
+VCC
+Text GLabel 3600 4950 0    60   Input ~ 0
+VCC
 $Comp
 L GND #PWR02
 U 1 1 5B1FAFAA
-P 3300 5500
-F 0 "#PWR02" H 3300 5250 50  0001 C CNN
-F 1 "GND" H 3300 5350 50  0000 C CNN
-F 2 "" H 3300 5500 50  0001 C CNN
-F 3 "" H 3300 5500 50  0001 C CNN
-	1    3300 5500
+P 6300 2800
+F 0 "#PWR02" H 6300 2550 50  0001 C CNN
+F 1 "GND" H 6300 2650 50  0000 C CNN
+F 2 "" H 6300 2800 50  0001 C CNN
+F 3 "" H 6300 2800 50  0001 C CNN
+	1    6300 2800
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2900 3250 3300 3250
-Wire Wire Line
-	3300 3250 3300 5500
-Wire Wire Line
-	3250 3550 3250 3750
-Wire Wire Line
-	3350 3750 2900 3750
-Wire Wire Line
-	3250 4150 3250 4250
-Wire Wire Line
-	2900 4250 3600 4250
-Wire Wire Line
-	2900 5050 3300 5050
-Connection ~ 3300 5050
-Wire Wire Line
-	2900 4050 3300 4050
-Connection ~ 3300 4050
-Wire Wire Line
-	2900 3650 3300 3650
-Connection ~ 3300 3650
-$Comp
-L GND #PWR03
-U 1 1 5B1FD0E8
-P 6750 5500
-F 0 "#PWR03" H 6750 5250 50  0001 C CNN
-F 1 "GND" H 6750 5350 50  0000 C CNN
-F 2 "" H 6750 5500 50  0001 C CNN
-F 3 "" H 6750 5500 50  0001 C CNN
-	1    6750 5500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6950 5050 6750 5050
-Wire Wire Line
-	6750 3550 6750 5500
-Wire Wire Line
-	6950 4650 6750 4650
-Connection ~ 6750 5050
-Wire Wire Line
-	6950 3850 6750 3850
-Connection ~ 6750 4650
-Wire Wire Line
-	6950 3550 6750 3550
-Connection ~ 6750 3850
-Wire Wire Line
-	3900 5300 3900 5200
-Wire Wire Line
-	3900 5200 3300 5200
-Connection ~ 3300 5200
-Wire Wire Line
-	3600 4550 3300 4550
-Connection ~ 3300 4550
-Wire Wire Line
-	3600 4650 3300 4650
-Connection ~ 3300 4650
-Wire Wire Line
-	3600 3150 3600 3000
-Wire Wire Line
-	3600 3000 3750 3000
-Wire Wire Line
-	3600 3250 3550 3250
-Wire Wire Line
-	3550 3250 3550 2950
-Wire Wire Line
-	3550 2950 3650 2950
-Wire Wire Line
-	3650 2950 3650 2800
-Wire Wire Line
-	3350 2700 3350 5150
-Wire Wire Line
-	3350 3150 2900 3150
-Connection ~ 3250 3750
-Connection ~ 3350 3150
-Wire Wire Line
-	3350 4350 2900 4350
-Connection ~ 3350 3750
-Wire Wire Line
-	3350 5150 2900 5150
-Connection ~ 3350 4350
-Connection ~ 3300 4850
-Wire Wire Line
-	3600 4850 3350 4850
-Connection ~ 3350 4850
-Wire Wire Line
-	3600 4950 3600 5150
-Wire Wire Line
-	3600 5150 4000 5150
-Wire Wire Line
-	4000 5150 4000 5300
-$Comp
-L +5V #PWR04
-U 1 1 5B1FE22B
-P 6700 2700
-F 0 "#PWR04" H 6700 2550 50  0001 C CNN
-F 1 "+5V" H 6700 2840 50  0000 C CNN
-F 2 "" H 6700 2700 50  0001 C CNN
-F 3 "" H 6700 2700 50  0001 C CNN
-	1    6700 2700
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6700 2700 6700 4550
-Wire Wire Line
-	6700 3050 6950 3050
-Wire Wire Line
-	6700 3950 6950 3950
-Connection ~ 6700 3050
-Wire Wire Line
-	6700 4550 6950 4550
-Connection ~ 6700 3950
-Wire Wire Line
-	3450 2500 6300 2500
-Wire Wire Line
-	6300 2500 6300 3250
-Wire Wire Line
-	6300 3250 6200 3250
-Connection ~ 3250 4250
-Wire Wire Line
-	6950 4450 6400 4450
-Wire Wire Line
-	6400 4450 6400 5750
-Wire Wire Line
-	6400 5750 3450 5750
-Wire Wire Line
-	3450 5750 3450 3750
-Wire Wire Line
-	3450 3750 3600 3750
-Wire Wire Line
-	6950 4350 6350 4350
-Wire Wire Line
-	6350 4350 6350 5700
-Wire Wire Line
-	6350 5700 3500 5700
-Wire Wire Line
-	3500 5700 3500 3850
-Wire Wire Line
-	3500 3850 3600 3850
-Wire Wire Line
-	6950 4950 6300 4950
-Wire Wire Line
-	6300 4950 6300 3850
-Wire Wire Line
-	6300 3850 6200 3850
-Wire Wire Line
-	3450 2500 3450 3450
-Wire Wire Line
-	3450 3450 2950 3450
-Wire Wire Line
-	2950 3450 2950 3550
-Wire Wire Line
-	2900 4950 3300 4950
-Connection ~ 3300 4950
-Wire Wire Line
-	2900 4850 3250 4850
-Wire Wire Line
-	3250 4850 3250 4450
-Wire Wire Line
-	3250 4450 3550 4450
-Wire Wire Line
-	3550 4450 3550 4050
-Wire Wire Line
-	3550 4050 3600 4050
-Wire Wire Line
-	2900 3050 3400 3050
-Wire Wire Line
-	3400 3050 3400 4150
-Wire Wire Line
-	3400 4150 3600 4150
-Wire Wire Line
-	3750 3000 3750 2950
+Text GLabel 6300 2800 1    60   Input ~ 0
+GND
+Text GLabel 6150 2550 3    60   Output ~ 0
++5V
+Text GLabel 6950 3150 0    60   Input ~ 0
+D4
+Text GLabel 6200 3350 2    60   Output ~ 0
+D4
+Text GLabel 6950 3250 0    60   Input ~ 0
+D5
+Text GLabel 6200 3450 2    60   Output ~ 0
+D5
+Text GLabel 6950 3350 0    60   Input ~ 0
+D6
+Text GLabel 6200 3550 2    60   Output ~ 0
+D6
+Text GLabel 6200 3650 2    60   Output ~ 0
+D7
+Text GLabel 6950 3450 0    60   Input ~ 0
+D7
+Text GLabel 6950 4050 0    60   Input ~ 0
+D10
+Text GLabel 6200 3950 2    60   Output ~ 0
+D10
+Text GLabel 6950 4950 0    60   Input ~ 0
+D9
+Text GLabel 6200 3850 2    60   Output ~ 0
+D9
+Text GLabel 6950 4350 0    60   Input ~ 0
+A4
+Text GLabel 6950 4450 0    60   Input ~ 0
+A5
+Text GLabel 3600 3750 0    60   Output ~ 0
+A5
+Text GLabel 3600 3850 0    60   Output ~ 0
+A4
+Text GLabel 2650 4850 2    60   Input ~ 0
+A2
+Text GLabel 3600 4050 0    60   Output ~ 0
+A2
+Text GLabel 2650 4250 2    60   Input ~ 0
+A0
+Text GLabel 3600 4250 0    60   Output ~ 0
+A0
+Text GLabel 2650 3550 2    60   Input ~ 0
+D3
+Text GLabel 6200 3250 2    60   Output ~ 0
+D3
+Text GLabel 2650 3050 2    60   Input ~ 0
+A1
+Text GLabel 3600 4150 0    60   Output ~ 0
+A1
+Text GLabel 3300 2700 3    60   Input ~ 0
+TX
+Text GLabel 3400 2700 3    60   Output ~ 0
+RX
+Text GLabel 3600 3150 0    60   Input ~ 0
+RX
+Text GLabel 3600 3250 0    60   Output ~ 0
+TX
+Wire Wire Line
+	3050 3450 3050 3500
+Wire Wire Line
+	2650 3550 2650 3450
+Wire Wire Line
+	2650 3450 3050 3450
+Wire Wire Line
+	2650 3750 2650 3850
+Wire Wire Line
+	2650 3850 3050 3850
+Wire Wire Line
+	3050 3850 3050 3800
+Wire Wire Line
+	2650 4150 2900 4150
+Wire Wire Line
+	3200 4150 3200 4250
+Wire Wire Line
+	3200 4250 2650 4250
 $EndSCHEMATC
