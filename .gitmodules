@@ -31,3 +31,9 @@
 [submodule "kicad/arduino-kicad-library"]
 	path = kicad/arduino-kicad-library
 	url = git@github.com:Alarm-Siren/arduino-kicad-library.git
+[submodule "src/lib/ArduinoSerialCommand"]
+	path = src/lib/ArduinoSerialCommand
+	url = https://github.com/scogswell/ArduinoSerialCommand.git
+[submodule "src/lib/SoftwareSerial"]
+	path = src/lib/SoftwareSerial
+	url = https://github.com/PaulStoffregen/SoftwareSerial.git

@@ -5,6 +5,7 @@
 #include "alarms.h"
 #include "sensors.h"
 #include "lcd.h"
+#include "commands.h"
 #include "test.h"
 
 
@@ -16,6 +17,7 @@ void setup() {
   while (!Serial);
 
   timeInit();
+  cmdInit();
 
   fanInit();
   pumpInit();
@@ -26,7 +28,7 @@ void setup() {
 }
 
 void loop() {
-  getTime();
+  //getTime();
   currentValues = readSensors();
   
   switch(modeLCD) {
