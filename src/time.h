@@ -2,14 +2,15 @@
 #include "alarms.h"
 #include <TimeLib.h>
 #include "define.h"
+#include "pump.h"
 
 void timeInit();
 
-void getTime();
+/*void getTime();*/
 
 time_t requestTimeSync();
 
-void processTimeSyncMessage();
+/*void processTimeSyncMessage();*/
 
 void digitalClockDisplay();
 

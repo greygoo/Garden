@@ -17,23 +17,24 @@ void setup() {
   while (!Serial);
 
   timeInit();
-  cmdInit();
+  //cmdInit();
 
   fanInit();
   pumpInit();
   lightInit();
 
   LCDInit();
-  //pumpTest();
+  pumpTest();
 }
 
 void loop() {
   //getTime();
+  getSerial();
   currentValues = readSensors();
   
   switch(modeLCD) {
   case 0:
-    printTimeLCD();
+    //printTimeLCD();
     modeLCD++;
     break;
   case 1:

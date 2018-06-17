@@ -7,7 +7,7 @@ void timeInit() {
 }
 
 
-void getTime(){
+/*void getTime(){
   if (Serial.available()) {
     processTimeSyncMessage();
   }
@@ -19,7 +19,7 @@ void getTime(){
   } else {
     digitalWrite(13, LOW);  // LED off if needs refresh
   }
-}
+}*/
 
 
 time_t requestTimeSync() {
@@ -28,7 +28,7 @@ time_t requestTimeSync() {
 }
 
 
-void processTimeSyncMessage() {
+/*void processTimeSyncMessage() {
   unsigned long pctime;
   const unsigned long DEFAULT_TIME = 1339487940; // Jan 1 2013
 
@@ -37,9 +37,13 @@ void processTimeSyncMessage() {
      if( pctime >= DEFAULT_TIME) { // check the integer is a valid time (greater than Jan 1 2013)
        setTime(pctime); // Sync Arduino clock to the time received on the serial port
      }
+     else {
+       pumpOn();
+       Alarm.timerOnce(pctime, pumpOff);
+     }
      alarmInit(); //reinitialise alarms
   }
-}
+}*/
 
 
 void digitalClockDisplay(){
