@@ -6,7 +6,7 @@
 #include "sensors.h"
 #include "lcd.h"
 #include "commands.h"
-#include "test.h"
+//#include "test.h"
 
 
 sensorValues currentValues = { 0,0,0,0,0,0,0 };
@@ -24,11 +24,10 @@ void setup() {
   lightInit();
 
   LCDInit();
-  pumpTest();
+  //pumpTest();
 }
 
 void loop() {
-  //getTime();
   getSerial();
   currentValues = readSensors();
   
@@ -44,6 +43,7 @@ void loop() {
   default:
     modeLCD = 0;
   }
+  digitalClockDisplay();
   
   Alarm.delay(5000);
 }

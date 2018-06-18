@@ -17,7 +17,7 @@ void alarmInit() {
   Alarm.free(lightOffAlarmId);
 
   // pump rules
-  pumpAlarmId = Alarm.timerRepeat(2400, pumpIntervall); //turn on pump every 60 second for the pump intervall
+  pumpAlarmId = Alarm.timerRepeat(86400, pumpIntervall); //turn on pump every 24 hours for the pump intervall
 
 
   //light rules

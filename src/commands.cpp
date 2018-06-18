@@ -9,8 +9,13 @@ void getSerial(){
 void processSerialMessage(){
   long int arg;
   const unsigned long DEFAULT_TIME = 1339487940;
+  char cmd_terminator;
+  cmd_terminator = ' ';
 
-  if ( Serial.find("pump")) {
+  String cmd = Serial.readStringUntil(cmd_terminator);
+  Serial.println(cmd);
+  //if ( Serial.find("pump")) {
+  if( cmd.equals("pump")) {
     arg = Serial.parseInt() ;
     switch(arg) {
       case 0:
@@ -24,7 +29,8 @@ void processSerialMessage(){
         break;
     }
   }
-  else if (Serial.find("light")) {
+  //if (Serial.find("light")) {
+  if (cmd.equals("light")) {
     arg = Serial.parseInt();
     switch(arg) {
       case 0:
@@ -38,7 +44,8 @@ void processSerialMessage(){
         break;
     }
   }
-  else if (Serial.find("fan")) {
+  //if (Serial.find("fan")) {
+  if (cmd.equals("fan")) {
     arg = Serial.parseInt();
     switch(arg) {
       case 0:
@@ -52,7 +59,8 @@ void processSerialMessage(){
         break;
     }
   }
-  else if (Serial.find("time")) {
+  //if (Serial.find("time")) {
+  if (cmd.equals("time")) {
     arg = Serial.parseInt();
     if( arg >= DEFAULT_TIME) {
       setTime(arg);
