@@ -2,9 +2,8 @@
 #include "pump.h"
 #include "time.h"
 #include "light.h"
-#include "alarms.h"
-#include "sensors.h"
 #include "test.h"
+#include "sensors.h"
 
 
 sensorValues currentValues = { 0,0,0,0,0,0,0 };

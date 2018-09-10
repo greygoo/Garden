@@ -2,7 +2,7 @@
 
 void pumpTest(){
   pumpOn();
-  Alarm.delay(1000);
+  delay(200);
   pumpOff();
 }
 

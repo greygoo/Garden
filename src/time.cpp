@@ -37,7 +37,6 @@ void processTimeSyncMessage() {
      if( pctime >= DEFAULT_TIME) { // check the integer is a valid time (greater than Jan 1 2013)
        setTime(pctime); // Sync Arduino clock to the time received on the serial port
      }
-     alarmInit(); //reinitialise alarms
   }
 }
 

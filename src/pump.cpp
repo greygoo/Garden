@@ -24,10 +24,3 @@ void pumpOff(){
   ctrlWaterPump(1);
   Serial.println("turn pump off.");
 }
-
-
-void pumpIntervall(){
-  pumpOn();
-  Alarm.timerOnce(PUMP_INTERVALL, pumpOff);
-}
-
