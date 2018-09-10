@@ -10,7 +10,7 @@
 
 
 sensorValues currentValues = { 0,0,0,0,0,0,0 };
-int modeLCD = 0;
+int display_time = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -31,19 +31,15 @@ void loop() {
   getSerial();
   currentValues = readSensors();
   
-  switch(modeLCD) {
-  case 0:
-    //printTimeLCD();
-    modeLCD++;
-    break;
-  case 1:
+  if (display_time == 0) { 
     printValues(currentValues);
-    modeLCD = 0;
-    break;
-  default:
-    modeLCD = 0;
+    digitalClockDisplay();
+    display_time = 10;
   }
-  digitalClockDisplay();
+  else {
+    display_time--;
+  }
+
   
-  Alarm.delay(5000);
+  Alarm.delay(100);
 }

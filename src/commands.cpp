@@ -59,6 +59,10 @@ void processSerialMessage(){
         break;
     }
   }
+  if (cmd.equals("fanspeed")) {
+    arg = Serial.parseFloat();
+    setFanSpeed(FAN0_PWM_PIN, arg);
+  }
   //if (Serial.find("time")) {
   if (cmd.equals("time")) {
     arg = Serial.parseInt();
