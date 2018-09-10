@@ -1,5 +1,4 @@
 #include "sensors.h"
-#include "lcd.h"
 
 DHT_Unified dht1(DHT_PIN1, DHT_TYPE);
 DHT_Unified dht2(DHT_PIN2, DHT_TYPE);
@@ -138,6 +137,5 @@ void printValuesSerial(sensorValues values) {
 
 
 void printValues(sensorValues values) {
-  printValuesLCD(values);
   printValuesSerial(values);
 }
