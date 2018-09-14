@@ -1,3 +1,3 @@
 #include "pump.h"
 
-void pumpTest();
+void pumpTest(int pump);

@@ -3,8 +3,8 @@
 
 void pumpInit();
 
-void ctrlWaterPump(bool state);
+void ctrlWaterPump(int pump, bool state);
 
-void pumpOn();
+void pumpOn(int pump);
 
-void pumpOff();
+void pumpOff(int pump);

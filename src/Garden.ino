@@ -1,6 +1,6 @@
 #include "fans.h"
+#include "command.h"
 #include "pump.h"
-#include "time.h"
 #include "light.h"
 #include "test.h"
 #include "sensors.h"
@@ -12,8 +12,6 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
 
-  timeInit();
-
   fanInit();
   pumpInit();
   lightInit();
@@ -21,9 +19,15 @@ void setup() {
 }
 
 void loop() {
-  getTime();
   currentValues = readSensors();
   
   printValues(currentValues);
   delay(1000);  
+}
+
+void handleSerial() {
+ while (Serial.available() > 0) {
+    char incomingCharacter = Serial.read();
+    get_command(incomingCharacter);
+  }
 }
