@@ -31,24 +31,24 @@ void ctrlFan(int fan, bool state) {
 
   Serial.print("Fan ");
   Serial.print(fan);
-  Serial.print("set to: ");
+  Serial.print(" set to: ");
   Serial.println(state);
 }
 
 
 void fanOn(int fan) {
-  ctrlFan(fan, 1);
+  ctrlFan(fan, 0);
   
   Serial.print("turn on fan ");
-  Serial.print(fan);
+  Serial.println(fan);
 }
 
 
 void fanOff(int fan) {
-  ctrlFan(fan, 0);
+  ctrlFan(fan, 1);
   
   Serial.print("turn off fan ");
-  Serial.print(fan);
+  Serial.println(fan);
 }
 
 

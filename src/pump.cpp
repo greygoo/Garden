@@ -28,14 +28,14 @@ void ctrlWaterPump(int pump, bool state){
   
   Serial.print("waterpump ");
   Serial.print(pump);
-  Serial.print("set to: ");
+  Serial.print(" set to: ");
   Serial.println(state);
 }
 
 
 void pumpOn(int pump){
   ctrlWaterPump(pump, 0);
-  Serial.println("turn on pump ");
+  Serial.print("turn on pump ");
   Serial.println(pump);
 }
 
@@ -43,5 +43,5 @@ void pumpOn(int pump){
 void pumpOff(int pump) {
   ctrlWaterPump(pump, 1);
   Serial.print("turn off pump ");
-  Serial.print(pump);
+  Serial.println(pump);
 }

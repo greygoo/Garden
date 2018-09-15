@@ -4,15 +4,15 @@ void handleSerial() {
   String incomingString;
   while (Serial.available() > 0) {
     incomingString = Serial.readStringUntil('\n');
-    Serial.print("Received command: " + incomingString);
+    Serial.println("Received command: " + incomingString);
   }
   handleCommand(incomingString);
 }
 
 
 int parseInt(char in_char) {
-  if(isDigit(in_char)) {
-    return int(in_char);
+  if (isDigit(in_char)) {
+    return (int(in_char) - 48);
   }
   else {
     return -1;
@@ -86,9 +86,5 @@ void handleCommand(String command) {
 	Serial.println(command_char[1]);
       break;
     }
-  }
-  else {
-    Serial.print("Unkown command identifier: ");
-    Serial.println(command_char[0]);
   }
 }
