@@ -29,9 +29,9 @@ void ctrlFan(int fan, bool state) {
     break;
   }
 
-  Serial.print("set Fan ");
+  Serial.print("Fan ");
   Serial.print(fan);
-  Serial.print(" to: ");
+  Serial.print("set to: ");
   Serial.println(state);
 }
 
