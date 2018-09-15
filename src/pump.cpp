@@ -11,47 +11,37 @@ void pumpInit(){
 
 void ctrlWaterPump(int pump, bool state){
   switch (pump) {
-    case '0':  
+    case 0:  
       digitalWrite(PUMP0_PIN, state);
     break;
 
-    case '1':
+    case 1:
       digitalWrite(PUMP1_PIN, state);
     break;
 
     default:
-      Serial.print("Error unknown pump");
+      Serial.print("Error unknown pump: ");
+      Serial.println(pump);
+      return;
     break;
   }
   
-  Serial.print("set waterpump ");
+  Serial.print("waterpump ");
   Serial.print(pump);
-  Serial.print(" to: ");
+  Serial.print("set to: ");
   Serial.println(state);
 }
 
 
 void pumpOn(int pump){
-  if (pump >= 0 && pump <= 1) {
-    ctrlWaterPump(pump, 0);
-    Serial.println("turn on pump ");
-    Serial.println(pump);
-  }
-  else {
-    Serial.print("No such pump: ");
-    Serial.println(pump);
-  }
+  ctrlWaterPump(pump, 0);
+  Serial.println("turn on pump ");
+  Serial.println(pump);
 }
 
 
 void pumpOff(int pump) {
-  if (pump >= 0 && pump <= 1) {
-    ctrlWaterPump(pump, 1);
-    Serial.print("turn off pump ");
-    Serial.print(pump);
-  }
-  else {
-    Serial.print("No such pump: ");
-    Serial.println(pump);
-  }
+  ctrlWaterPump(pump, 1);
+  Serial.print("turn off pump ");
+  Serial.print(pump);
 }
