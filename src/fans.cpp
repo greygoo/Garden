@@ -5,8 +5,9 @@ void fanInit(){
   Timer1.initialize(40); // set to 25kHz (40us)
   pinMode(FAN0_PWM_PIN, OUTPUT);
   pinMode(FAN0_PIN, OUTPUT);
+  pinMode(FAN1_PIN, OUTPUT);
   
-  fanOn(FAN0_PIN); //turn on fan 0
+  //fanOn(FAN0_PIN); //turn on fan 0
   setFanSpeed(FAN0_PWM_PIN, INITIAL_FAN_CYCLE); // set fan0 to initial speed
 }
 
