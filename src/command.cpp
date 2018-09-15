@@ -1,50 +1,70 @@
 #include "command.h"
 
 void handleSerial() {
- while (Serial.available() > 0) {
-    char incomingCharacter = Serial.read();
-    get_command(incomingCharacter);
+  String incomingString;
+  while (Serial.available() > 0) {
+    incomingString = Serial.readStringUntil('\n');
+    Serial.print("Received command: " + incomingString);
+  }
+  handleCommand(incomingString);
+}
+
+
+int parseInt(char in_char) {
+  if(isDigit(in_char)) {
+    return int(in_char);
+  }
+  else {
+    return -1;
   }
 }
 
 
-void get_command(char command) {
-  if(command == 'c') {
-  char command_char = Serial.read();
-    switch(command_char) { 
+void handleCommand(String command) {
+  int command_length = command.length();
+  char command_char[command_length];
+  command.toCharArray(command_char, command_length);
+  if (command_char[0] == 'c') {
+    switch (command_char[1]) {
       case 'l':
 	lightOff();
       break;
 
       case 'L':
-	lightOn();
+        lightOn();
       break;
 
       case 'p':
       {
-	int pump_num = Serial.parseInt();
+	int pump_num = parseInt(command_char[2]);
 	pumpOff(pump_num);
       }
       break;
 
       case 'P':
       {
-	int pump_num = Serial.parseInt();
+	int pump_num = parseInt(command_char[2]);
 	pumpOn(pump_num);
       }
       break; 
 
       case 'f':
-	fanOff(FAN0_PIN);
+      {
+	int fan_num = parseInt(command_char[2]);
+	fanOff(fan_num);
+      }
       break;
 
       case 'F':
-	fanOn(FAN0_PIN);
+      {
+        int fan_num = parseInt(command_char[2]);
+	fanOn(fan_num);
+      }
       break;
 
       case 's':
       {
-	char fan_speed = Serial.parseInt();
+	int fan_speed = parseInt(command_char[2]);
 	if (fan_speed >= 0 && fan_speed <= '9') {
 	  setFanSpeed(FAN0_PWM_PIN, (fan_speed * 10));
 	}
@@ -62,22 +82,13 @@ void get_command(char command) {
       break;
 
       default:
-	Serial.print("Command not known: ");
-	Serial.println(command_char);
+        Serial.print("Unkown command: ");
+	Serial.println(command_char[1]);
       break;
     }
   }
   else {
-    Serial.print("Unknown input: ");
-    Serial.println(command);
-    Serial.println();
-    Serial.println("Usage: ");
-    Serial.println(" cf      - turn Fans off");
-    Serial.println(" cF      - turn Fans on");
-    Serial.println(" cp<0|1> - turn Pump 0|1 off");
-    Serial.println(" cP<0|1> - turn Pump 0|1 on");
-    Serial.println(" cl      - turn Lights off");
-    Serial.println(" cL      - turn Lights on");
-    Serial.println(" cs<0-9> - set Fan speed to 0-9");
+    Serial.print("Unkown command identifier: ");
+    Serial.println(command_char[0]);
   }
 }

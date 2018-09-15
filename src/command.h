@@ -5,4 +5,5 @@
 #include "sensors.h"
 
 void handleSerial();
-void get_command(char command);
+int parseInt(char in_char);
+void handleCommand(String command);
