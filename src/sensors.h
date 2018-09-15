@@ -23,3 +23,5 @@ float getEcc();
 void printValuesSerial(sensorValues values);
 
 void printValues(sensorValues values);
+
+void printSensorData();

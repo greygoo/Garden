@@ -139,3 +139,9 @@ void printValuesSerial(sensorValues values) {
 void printValues(sensorValues values) {
   printValuesSerial(values);
 }
+
+void printSensorData() {
+  sensorValues currentValues = { 0,0,0,0,0,0,0 };
+  currentValues = readSensors();
+  printValues(currentValues);
+}

@@ -19,15 +19,5 @@ void setup() {
 }
 
 void loop() {
-  currentValues = readSensors();
-  
-  printValues(currentValues);
-  delay(1000);  
-}
-
-void handleSerial() {
- while (Serial.available() > 0) {
-    char incomingCharacter = Serial.read();
-    get_command(incomingCharacter);
-  }
+  handleSerial();
 }
