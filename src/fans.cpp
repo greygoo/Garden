@@ -12,21 +12,43 @@ void fanInit(){
 }
 
 
-void fanOn(int fan_pin) {
-  digitalWrite(fan_pin, LOW);
-  
-  Serial.print("Fan on pin ");
-  Serial.print(fan_pin);
-  Serial.println(" turned on.");
+void ctrlFan(int fan, bool state) {
+  switch(fan) {
+    case 0:
+      digitalWrite(FAN0_PIN, state);
+    break;
+
+    case 1:
+      digitalWrite(FAN1_PIN, state);
+    break;
+
+    default:
+      Serial.print("Error unknown fan: ");
+      Serial.println(fan);
+      return;
+    break;
+  }
+
+  Serial.print("set Fan ");
+  Serial.print(fan);
+  Serial.print(" to: ");
+  Serial.println(state);
 }
 
 
-void fanOff(int fan_pin) {
-  digitalWrite(fan_pin, HIGH);
+void fanOn(int fan) {
+  ctrlFan(fan, 1);
   
-  Serial.print("Fan on pin ");
-  Serial.print(fan_pin);
-  Serial.println(" turned off.");
+  Serial.print("turn on fan ");
+  Serial.print(fan);
+}
+
+
+void fanOff(int fan) {
+  ctrlFan(fan, 0);
+  
+  Serial.print("turn off fan ");
+  Serial.print(fan);
 }
 
 
