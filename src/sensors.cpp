@@ -137,7 +137,15 @@ void printValuesSerial(sensorValues values) {
 
 
 void printSimpleSerial(sensorValues values) {
-  Serial.println(values.tempAir1 + ',' + values.humAir1 + ',' + values.tempWater + ',' + values.pH + ',' + values.ecc);
+  Serial.print(values.tempAir1);
+  Serial.print(",");
+  Serial.print(values.humAir1);
+  Serial.print(",");
+  Serial.print(values.tempWater);
+  Serial.print(",");
+  Serial.print(values.pH);
+  Serial.print(",");
+  Serial.println(values.ecc);
 }
 
 

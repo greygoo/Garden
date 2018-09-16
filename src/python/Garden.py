@@ -3,10 +3,10 @@
 import serial
 import time
 
-ser = serial.Serial('/dev/ttyUSB0', 9600)
+ser = serial.Serial('/dev/ttyUSB1', 9600)
 print 'Serial connection initialised'
 
 while 1:
-    ser.write(b'cd\r\n')
+    ser.write(b'cD\r\n')
     time.sleep( 1 )
     print ser.readline();
