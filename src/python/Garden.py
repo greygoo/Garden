@@ -6,9 +6,8 @@ import sys
 import schedule
 
 baudrate = 9600
+sensorlog = '/tmp/sensorlog.csv'
 
-
-log = open('/tmp/sensorlog', 'a')
 
 ser = serial.Serial()
 ser.port = sys.argv[1]
@@ -87,10 +86,12 @@ def writeSensorData():
     print('Temperature Air  : %f' % float(sensor_data[0]))
     print('Temperature Water: %f' % float(sensor_data[2]))
     print('Humidity         : %f' % float(sensor_data[1]))
+    log = open(sensorlog, 'a')
     for data in sensor_data:
         log.write(data)
         log.write(',')
     log.write("\n")
+    log.close
 
 
 def testFan():
