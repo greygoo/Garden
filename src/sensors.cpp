@@ -136,12 +136,20 @@ void printValuesSerial(sensorValues values) {
 }
 
 
-void printValues(sensorValues values) {
-  printValuesSerial(values);
+void printSimpleSerial(sensorValues values) {
+  Serial.println(values.tempAir1 + ',' + values.humAir1 + ',' + values.tempWater + ',' + values.pH + ',' + values.ecc);
 }
+
 
 void printSensorData() {
   sensorValues currentValues = { 0,0,0,0,0,0,0 };
   currentValues = readSensors();
-  printValues(currentValues);
+  printValuesSerial(currentValues);
+}
+
+
+void printSimpleData() {
+  sensorValues currentValues = { 0,0,0,0,0,0,0 };
+  currentValues = readSensors();
+  printSimpleSerial(currentValues);
 }

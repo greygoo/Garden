@@ -81,6 +81,12 @@ void handleCommand(String command) {
       }
       break;
 
+      case 'D':
+      {
+	printSimpleData();
+      }
+      break;
+
       default:
         Serial.print("Unkown command: ");
 	Serial.println(command_char[1]);
