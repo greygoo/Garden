@@ -7,8 +7,9 @@ void fanInit(){
   pinMode(FAN0_PIN, OUTPUT);
   pinMode(FAN1_PIN, OUTPUT);
   
-  //fanOn(FAN0_PIN); //turn on fan 0
   setFanSpeed(FAN0_PWM_PIN, INITIAL_FAN_CYCLE); // set fan0 to initial speed
+  fanOff(0); //turn off fan 0
+  fanOff(1); //turn off fan 0
 }
 
 
