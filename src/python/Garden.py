@@ -3,8 +3,10 @@
 import serial
 import time
 import sys
+import schedule
 
 baudrate = 9600
+
 
 log = open('/tmp/sensorlog', 'a')
 
@@ -137,7 +139,10 @@ def testPump():
     time.sleep(2)
 
 
-testLight()
+schedule.every().day.at('06:00').do(lightOn)
+schedule.every().day.at('00:00').do(lightOff)
 
 while True:
+    schedule.run_pending()
     writeSensorData()
+    time.sleep(60)
