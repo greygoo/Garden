@@ -4,7 +4,7 @@ void handleSerial() {
   String incomingString;
   while (Serial.available() > 0) {
     incomingString = Serial.readStringUntil('\n');
-    Serial.println("Received command: " + incomingString);
+    Serial.println("debug,Received command: " + incomingString);
   }
   handleCommand(incomingString);
 }
@@ -69,7 +69,7 @@ void handleCommand(String command) {
 	  setFanSpeed(FAN0_PWM_PIN, (fan_speed * 10));
 	}
 	else {
-	  Serial.print("Error fan speed: ");
+	  Serial.print("debug,Error fan speed: ");
 	  Serial.println(fan_speed);
 	}
       }
@@ -88,7 +88,7 @@ void handleCommand(String command) {
       break;
 
       default:
-        Serial.print("Unkown command: ");
+        Serial.print("debug,Unkown command: ");
 	Serial.println(command_char[1]);
       break;
     }

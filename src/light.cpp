@@ -12,11 +12,11 @@ void lightInit() {
 
 void lightOff(){
   powerSwitch.sendTriState("00000F000FF0");
-  Serial.println("Switching light off.");
+  Serial.println("debug,Switching light off.");
 }
 
 
 void lightOn(){
   powerSwitch.sendTriState("00000F000FFF");
-  Serial.println("Switching light on.");
+  Serial.println("debug,Switching light on.");
 }

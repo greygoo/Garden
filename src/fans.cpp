@@ -24,13 +24,13 @@ void ctrlFan(int fan, bool state) {
     break;
 
     default:
-      Serial.print("Error unknown fan: ");
+      Serial.print("debug,Error unknown fan: ");
       Serial.println(fan);
       return;
     break;
   }
 
-  Serial.print("Fan ");
+  Serial.print("debug,Fan ");
   Serial.print(fan);
   Serial.print(" set to: ");
   Serial.println(state);
@@ -40,7 +40,7 @@ void ctrlFan(int fan, bool state) {
 void fanOn(int fan) {
   ctrlFan(fan, 0);
   
-  Serial.print("turn on fan ");
+  Serial.print("debug,turn on fan ");
   Serial.println(fan);
 }
 
@@ -48,7 +48,7 @@ void fanOn(int fan) {
 void fanOff(int fan) {
   ctrlFan(fan, 1);
   
-  Serial.print("turn off fan ");
+  Serial.print("debug,turn off fan ");
   Serial.println(fan);
 }
 
@@ -56,7 +56,7 @@ void fanOff(int fan) {
 void setFanSpeed(int fan_pwm_pin, float dutyCycle){
   Timer1.pwm(fan_pwm_pin, (dutyCycle / 100) * 1023);
 
-  Serial.print("Fan pwm cycle set to ");
+  Serial.print("debug,Fan pwm cycle set to ");
   Serial.print(dutyCycle);
   Serial.print(" on pin ");
   Serial.println(fan_pwm_pin);
