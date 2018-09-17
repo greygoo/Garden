@@ -4,9 +4,11 @@ import serial
 import time
 import sys
 import schedule
+import threading
 
 baudrate = 9600
 sensorlog = '/tmp/sensorlog.csv'
+pumpintervall = 10
 
 
 ser = serial.Serial()
@@ -140,9 +142,14 @@ def testPump():
     time.sleep(2)
 
 
+def run_threaded(job_func):
+    job_thread = threading.Thread(target=job_func)
+    job_thread.start()
+
+
 def pump_cycle():
     fanOn(0)
-    sleep(10)
+    time.sleep(pumpintervall)
     fanOff(0)
 
 
