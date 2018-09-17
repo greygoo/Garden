@@ -140,8 +140,16 @@ def testPump():
     time.sleep(2)
 
 
+def pump_cycle():
+    fanOn(0)
+    sleep(10)
+    fanOff(0)
+
+
 schedule.every().day.at('06:00').do(lightOn)
 schedule.every().day.at('00:00').do(lightOff)
+schedule.every().minute.do(run_threaded, pump_cycle)
+
 
 while True:
     schedule.run_pending()
