@@ -1,4 +1,8 @@
 import matplotlib.pyplot as plt
+import os
+
+sensorlog_file = '/tmp/sensorlog.csv'
+
 
 plt.ion()
 
@@ -9,19 +13,31 @@ humidity_plt.set_xlabel('Time')
 humidity_plt.set_ylabel('Humidity')
 
 
-sensorlog = open('/tmp/sensorlog.csv','r')
+def getData():
+    temperature_air = []
+    temperature_water = []
+    humidity = []
+    sensorlog = open(sensorlog_file,'r')
+    for line in sensorlog:
+        line_array = line.split(',')
+        temperature_air.append(line_array[0])
+        temperature_water.append(line_array[2])
+        humidity.append(line_array[1])
+    sensorlog.close
+    return (temperature_air, temperature_water, humidity)
 
-temperature_air = []
-temperature_water = []
-humidity = []
 
-for line in sensorlog:
-    line_array = line.split(',')
-    temperature_air.append(line_array[0])
-    temperature_water.append(line_array[2])
-    humidity.append(line_array[1])
+def plot(temperature_air, temperature_water, humidity):
     temperature_plt.plot(temperature_air, 'C1')
     temperature_plt.plot(temperature_water, 'C2')
     humidity_plt.plot(humidity, 'C3', label='Humidity')
-    f.canvas.draw()
     plt.pause(1)
+
+
+last_modified = os.stat(sensorlog_file).st_mtime
+
+while True:
+    if os.stat(sensorlog_file).st_mtime != last_modified:
+        (temperature_air, temperature_water, humidity) = getData()
+        plot(temperature_air, temperature_water, humidity)
+        last_modified = os.stat(sensorlog_file).st_mtime
