@@ -1,0 +1,27 @@
+import matplotlib.pyplot as plt
+
+plt.ion()
+
+f, (temperature_plt, humidity_plt) = plt.subplots(2, 1)
+
+temperature_plt.set_ylabel('Temperature')
+humidity_plt.set_xlabel('Time')
+humidity_plt.set_ylabel('Humidity')
+
+
+sensorlog = open('/tmp/sensorlog.csv','r')
+
+temperature_air = []
+temperature_water = []
+humidity = []
+
+for line in sensorlog:
+    line_array = line.split(',')
+    temperature_air.append(line_array[0])
+    temperature_water.append(line_array[2])
+    humidity.append(line_array[1])
+    temperature_plt.plot(temperature_air, 'C1')
+    temperature_plt.plot(temperature_water, 'C2')
+    humidity_plt.plot(humidity, 'C3', label='Humidity')
+    f.canvas.draw()
+    plt.pause(1)
