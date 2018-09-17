@@ -34,6 +34,9 @@ def plot(temperature_air, temperature_water, humidity):
     plt.pause(1)
 
 
+(temperature_air, temperature_water, humidity) = getData()
+plot(temperature_air, temperature_water, humidity)
+
 last_modified = os.stat(sensorlog_file).st_mtime
 
 while True:
