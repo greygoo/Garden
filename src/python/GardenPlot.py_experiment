@@ -3,17 +3,30 @@ matplotlib.use("TkAgg")
 
 import matplotlib.pyplot as plt
 import os
+import time
 
 sensorlog_file = '/tmp/sensorlog.csv'
 
 
 plt.ion()
 
-f, (temperature_plt, humidity_plt) = plt.subplots(2, 1)
+f, ((temperature_plt, lasttemp_plt), (humidity_plt, lasthum_plt)) = plt.subplots(2, 2)
 
-temperature_plt.set_ylabel('Temperature')
-humidity_plt.set_xlabel('Time')
-humidity_plt.set_ylabel('Humidity')
+def plot_setup():
+    temperature_plt.set_ylabel('Temperature')
+    temperature_plt.set_ylim([-10,40])
+    temperature_plt.grid(color='grey', linestyle='-.', linewidth=0.5)
+
+    lasttemp_plt.grid(color='grey', linestyle='-.', linewidth=0.5)
+    lasttemp_plt.margins(y=0.5)
+
+    humidity_plt.set_xlabel('Time')
+    humidity_plt.set_ylabel('Humidity')
+    humidity_plt.set_ylim([0,100])
+    humidity_plt.grid(color='grey', linestyle='-.', linewidth=0.5)
+
+    lasthum_plt.grid(color='grey', linestyle='-.', linewidth=0.5)
+    lasthum_plt.margins(y=0.5)
 
 
 def getData():
@@ -30,20 +43,35 @@ def getData():
     return (temperature_air, temperature_water, humidity)
 
 
-def plot(temperature_air, temperature_water, humidity):
-    temperature_plt.plot(temperature_air, 'C1')
-    temperature_plt.plot(temperature_water, 'C2')
-    humidity_plt.plot(humidity, 'C3', label='Humidity')
-    plt.pause(1)
+def plot_all(temperature_air, temperature_water, humidity):
+    temperature_plt.plot(temperature_air, color = 'lightblue')
+    temperature_plt.plot(temperature_water, color = 'darkblue')
+    humidity_plt.plot(humidity, color = 'blue', label='Humidity')
 
+def plot_last(temperature_air, temperature_water, humidity):
+    lasttemp_plt.plot(temperature_air[-10:], color = 'lightblue')
+    lasttemp_plt.plot(temperature_water[-10:], color = 'darkblue')
+    lasthum_plt.plot(humidity[-10:], color = 'blue', label='Humidity')
+
+def plot_clear():
+    lasttemp_plt.cla()
+    lasthum_plt.cla()
+    plot_setup()
 
 (temperature_air, temperature_water, humidity) = getData()
-plot(temperature_air, temperature_water, humidity)
+plot_setup()
+plot_all(temperature_air, temperature_water, humidity)
+plot_last(temperature_air, temperature_water, humidity)
+plt.pause(0.5)
 
 last_modified = os.stat(sensorlog_file).st_mtime
 
 while True:
     if os.stat(sensorlog_file).st_mtime != last_modified:
         (temperature_air, temperature_water, humidity) = getData()
-        plot(temperature_air, temperature_water, humidity)
+	plot_clear()
+        plot_all(temperature_air, temperature_water, humidity)
+        plot_last(temperature_air, temperature_water, humidity)
         last_modified = os.stat(sensorlog_file).st_mtime
+	plt.pause(0.5)
+    time.sleep(1)
