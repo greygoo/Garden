@@ -10,7 +10,7 @@ sensorlog_file = '/tmp/sensorlog.csv'
 
 plt.ion()
 
-f, ((temperature_plt, lasttemp_plt), (humidity_plt, lasthum_plt)) = plt.subplots(2, 2)
+f, ((temperature_plt, lasttemp_plt), (humidity_plt, lasthum_plt)) = plt.subplots(2, 2, figsize=(20, 10))
 
 def plot_setup():
     temperature_plt.set_title('All Time')
