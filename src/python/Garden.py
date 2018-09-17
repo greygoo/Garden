@@ -13,7 +13,7 @@ ser = serial.Serial()
 ser.port = sys.argv[1]
 ser.baudrate = baudrate
 ser.open()
-time.sleep(1)
+time.sleep(10)
 print 'Serial connection initialised'
 
 # empty serial buffer from arduino startup
