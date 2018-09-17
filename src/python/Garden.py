@@ -148,9 +148,13 @@ def run_threaded(job_func):
 
 
 def pump_cycle():
-    fanOn(0)
+    pumpOn(0)
     time.sleep(pumpintervall)
-    fanOff(0)
+    pumpOff(0)
+    time.sleep(20)
+    pumpOn(1)
+    time.sleep(10)
+    pumpOff(1)
 
 
 schedule.every().day.at('06:00').do(lightOn)
