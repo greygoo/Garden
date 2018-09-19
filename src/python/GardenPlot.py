@@ -2,13 +2,13 @@
 
 
 import matplotlib
-matplotlib.use("TkAgg")
+matplotlib.use("GTKAgg")
 
 import matplotlib.pyplot as plt
 import os
 import time
 
-sensorlog_file = '/tmp/sensorlog.csv'
+sensorlog_file = '/home/pi/sensorlog.csv'
 
 
 plt.ion()

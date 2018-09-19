@@ -7,7 +7,7 @@ import schedule
 import threading
 
 baudrate = 9600
-sensorlog = '/tmp/sensorlog.csv'
+sensorlog = '/home/pi/sensorlog.csv'
 pumpintervall = 10
 
 
@@ -159,7 +159,7 @@ def pump_cycle():
 
 schedule.every().day.at('06:00').do(lightOn)
 schedule.every().day.at('00:00').do(lightOff)
-schedule.every().minute.do(run_threaded, pump_cycle)
+#schedule.every().minute.do(run_threaded, pump_cycle)
 
 
 while True:
