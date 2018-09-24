@@ -1,82 +1,82 @@
 #!/usr/bin/python
 
-
+from datetime import datetime as dt
 import matplotlib
-matplotlib.use("GTKAgg")
+matplotlib.use("TKAgg")
 
 import matplotlib.pyplot as plt
 import os
 import time
+import pandas as pd
 
-sensorlog_file = '/home/pi/sensorlog.csv'
+sensorlog_file = '/tmp/sensorlog.csv'
 
 
-plt.ion()
+def format_date(time_in_secs):
+    return dt.fromtimestamp(float(time_in_secs))
 
-f, ((temperature_plt, lasttemp_plt), (humidity_plt, lasthum_plt)) = plt.subplots(2, 2, figsize=(20, 10))
 
-def plot_setup():
+def plot_layout():
     temperature_plt.set_title('All Time')
     temperature_plt.set_ylabel('Temperature')
     temperature_plt.set_ylim([-10,40])
-    temperature_plt.grid(color='grey', linestyle='-.', linewidth=0.5)
+    temperature_plt.grid(color='black', linestyle='-.', linewidth=0.5)
 
-    lasttemp_plt.grid(color='grey', linestyle='-.', linewidth=0.5)
+    lasttemp_plt.grid(color='black', linestyle='-.', linewidth=0.5)
     lasttemp_plt.margins(y=0.5)
     lasttemp_plt.set_title('Last 30min')
 
     humidity_plt.set_xlabel('Time')
     humidity_plt.set_ylabel('Humidity')
     humidity_plt.set_ylim([0,100])
-    humidity_plt.grid(color='grey', linestyle='-.', linewidth=0.5)
+    humidity_plt.grid(color='black', linestyle='-.', linewidth=0.5)
 
-    lasthum_plt.grid(color='grey', linestyle='-.', linewidth=0.5)
+    lasthum_plt.grid(color='black', linestyle='-.', linewidth=0.5)
     lasthum_plt.margins(y=0.5)
 
 
-def getData():
-    temperature_air = []
-    temperature_water = []
-    humidity = []
-    sensorlog = open(sensorlog_file,'r')
-    for line in sensorlog:
-        line_array = line.split(',')
-        temperature_air.append(line_array[0])
-        temperature_water.append(line_array[2])
-        humidity.append(line_array[1])
-    sensorlog.close
-    return (temperature_air, temperature_water, humidity)
+def readData():
+    df = pd.read_csv('/tmp/sensorlog.csv_unixtime', names=['Date', 'TempAir', 'HumAir', 'TempWater', 'pH', 'ECC', 'Undefine'])
+    df['Date'] = df['Date'].apply(format_date)
+    print df
+    return df
 
 
-def plot_all(temperature_air, temperature_water, humidity):
-    temperature_plt.plot(temperature_air, color = 'lightblue')
-    temperature_plt.plot(temperature_water, color = 'darkblue')
-    humidity_plt.plot(humidity, color = 'blue', label='Humidity')
+def plot_data():
+    df.plot(x='Date', y=['TempAir', 'TempWater'], style=['lightblue', 'darkblue'], x_compat=True, ax=temperature_plt)
+    df[-30:].plot(x='Date', y=['TempAir', 'TempWater'], style=['lightblue', 'darkblue'], x_compat=True, ax=lasttemp_plt)
+    df.plot(x='Date', y='HumAir', style='green', x_compat=True, ax=humidity_plt)
+    df[-30:].plot(x='Date', y='HumAir', style='green', x_compat=True, ax=lasthum_plt)
+    plot_layout()
 
-def plot_last(temperature_air, temperature_water, humidity):
-    lasttemp_plt.plot(temperature_air[-30:], color = 'lightblue')
-    lasttemp_plt.plot(temperature_water[-30:], color = 'darkblue')
-    lasthum_plt.plot(humidity[-30:], color = 'blue', label='Humidity')
 
-def plot_clear():
+def plot_reset():
     lasttemp_plt.cla()
     lasthum_plt.cla()
     plot_setup()
 
-(temperature_air, temperature_water, humidity) = getData()
-plot_setup()
-plot_all(temperature_air, temperature_water, humidity)
-plot_last(temperature_air, temperature_water, humidity)
-plt.pause(0.5)
 
+
+# turn on interactive mode
+plt.ion()
+
+# create named subplots
+f, ((temperature_plt, lasttemp_plt), (humidity_plt, lasthum_plt)) = plt.subplots(2, 2, figsize=(20, 10))
+
+# get timestamp of sensorlog
 last_modified = os.stat(sensorlog_file).st_mtime
 
+# draw initial plot
+df = readData()
+plot_data()
+plt.pause(0.5)
+
+# redraw plot whenever sensorlog gets modified
 while True:
     if os.stat(sensorlog_file).st_mtime != last_modified:
-        (temperature_air, temperature_water, humidity) = getData()
-	plot_clear()
-        plot_all(temperature_air, temperature_water, humidity)
-        plot_last(temperature_air, temperature_water, humidity)
+        df = readData()
+	plot_reset()
+        plot_data()
         last_modified = os.stat(sensorlog_file).st_mtime
 	plt.pause(0.5)
     time.sleep(1)
