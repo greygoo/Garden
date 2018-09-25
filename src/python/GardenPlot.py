@@ -21,12 +21,15 @@ def plot_layout():
     temperature_plt.set_ylabel('Temperature')
     temperature_plt.set_ylim([-10,40])
     temperature_plt.grid(color='black', linestyle='-.', linewidth=0.5)
+    temperature_plt.xaxis.set_ticklabels([])
+    temperature_plt.xaxis.label.set_visible(False)
 
     lasttemp_plt.grid(color='black', linestyle='-.', linewidth=0.5)
     lasttemp_plt.margins(y=0.5)
     lasttemp_plt.set_title('Last 30min')
+    lasttemp_plt.xaxis.set_ticklabels([])
+    lasttemp_plt.xaxis.label.set_visible(False)
 
-    humidity_plt.set_xlabel('Time')
     humidity_plt.set_ylabel('Humidity')
     humidity_plt.set_ylim([0,100])
     humidity_plt.grid(color='black', linestyle='-.', linewidth=0.5)
