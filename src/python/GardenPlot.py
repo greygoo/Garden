@@ -2,18 +2,14 @@
 
 from datetime import datetime as dt
 import matplotlib
-matplotlib.use("TKAgg")
+matplotlib.use("GTKAgg")
 
 import matplotlib.pyplot as plt
 import os
 import time
 import pandas as pd
 
-sensorlog_file = '/tmp/sensorlog.csv'
-
-
-def format_date(time_in_secs):
-    return dt.fromtimestamp(float(time_in_secs))
+sensorlog_file = '/home/pi/sensorlog.csv'
 
 
 def plot_layout():
@@ -39,25 +35,28 @@ def plot_layout():
 
 
 def readData():
-    df = pd.read_csv('/tmp/sensorlog.csv_unixtime', names=['Date', 'TempAir', 'HumAir', 'TempWater', 'pH', 'ECC', 'Undefine'])
-    df['Date'] = df['Date'].apply(format_date)
-    print df
+    df = pd.read_csv(sensorlog_file, delimiter=',', index_col='DateTime', names=['DateTime', 'TempAir', 'HumAir', 'TempWater', 'pH', 'ECC', 'Undefined'], header=None)
+    df.index = pd.to_datetime(df.index, unit='s')
     return df
 
 
 def plot_data():
-    df.plot(x='Date', y=['TempAir', 'TempWater'], style=['lightblue', 'darkblue'], x_compat=True, ax=temperature_plt)
-    df[-30:].plot(x='Date', y=['TempAir', 'TempWater'], style=['lightblue', 'darkblue'], x_compat=True, ax=lasttemp_plt)
-    df.plot(x='Date', y='HumAir', style='green', x_compat=True, ax=humidity_plt)
-    df[-30:].plot(x='Date', y='HumAir', style='green', x_compat=True, ax=lasthum_plt)
+    # plot all available data
+    df.last('3M').plot(y=['TempAir', 'TempWater'], style=['lightblue', 'darkblue'], ax=temperature_plt)
+    df.last('3M').plot(y='HumAir', style='green', ax=humidity_plt)
+
+    # plot last 30 minutes
+    df.last('1800s').plot(y=['TempAir', 'TempWater'], style=['lightblue', 'darkblue'], ax=lasttemp_plt)
+    df.last('1800s').plot(y='HumAir', style='green', ax=lasthum_plt)
     plot_layout()
+
 
 
 def plot_reset():
     lasttemp_plt.cla()
     lasthum_plt.cla()
-    plot_setup()
-
+    temperature_plt.cla()
+    humidity_plt.cla()
 
 
 # turn on interactive mode

@@ -5,6 +5,7 @@ import time
 import sys
 import schedule
 import threading
+import time
 
 baudrate = 9600
 sensorlog = '/home/pi/sensorlog.csv'
@@ -30,7 +31,8 @@ def getData():
         serial_line = ser.readline().rstrip('\r\n').split(",");
         print serial_line
         if serial_line[0] == 'data':
-            serial_line.pop(0)
+            #serial_line.pop(0)
+            serial_line[0] = str(int(time.time()))
             return serial_line
         
 
