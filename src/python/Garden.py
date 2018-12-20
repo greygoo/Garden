@@ -60,7 +60,7 @@ class GtkMain(threading.Thread):
 
     def run(self):
         while True:
-            win = MyWindow(ser)
+            win = GardenControlWindow(ser)
             win.connect("destroy", Gtk.main_quit)
             win.show_all()
             Gtk.main()
