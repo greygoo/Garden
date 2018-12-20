@@ -1,12 +1,12 @@
 import time
-import threading
+#import threading
 
 def getData(ser):
     ser.write(b'cD\r\n')
     time.sleep(0.5)
     while ser.in_waiting > 0:
-        serial_line = ser.readline().rstrip('\r\n').split(",");
-        print serial_line
+        serial_line = ser.readline().decode().rstrip('\r\n').split(",");
+        print(serial_line)
         if serial_line[0] == 'data':
             #serial_line.pop(0)
             serial_line[0] = str(int(time.time()))
@@ -17,49 +17,49 @@ def lightOn(ser):
     ser.write(b'cL\r\n')
     time.sleep(1)
     while ser.in_waiting > 0:
-        print ser.readline().rstrip('\r\n')
+        print(ser.readline().decode().rstrip('\r\n'))
 
 
 def lightOff(ser):
     ser.write(b'cl\r\n')
     time.sleep(1)
     while ser.in_waiting > 0:
-        print ser.readline().rstrip('\r\n')
+        print(ser.readline().decode().rstrip('\r\n'))
 
 
 def pumpOn(ser, pump):
     ser.write(b'cP%d\r\n' % pump)
     time.sleep(1)
     while ser.in_waiting > 0:
-        print ser.readline().rstrip('\r\n')
+        print(ser.readline().decode().rstrip('\r\n'))
 
 
 def pumpOff(ser, pump):
     ser.write(b'cp%d\r\n' % pump)
     time.sleep(1)
     while ser.in_waiting > 0:
-        print ser.readline().rstrip('\r\n')
+        print(ser.readline().decode().rstrip('\r\n'))
 
 
 def fanOn(ser, fan):
     ser.write(b'cF%d\r\n' % fan)
     time.sleep(1)
     while ser.in_waiting > 0:
-        print ser.readline().rstrip('\r\n')
+        print(ser.readline().decode().rstrip('\r\n'))
 
 
 def fanOff(ser, fan):
     ser.write(b'cf%d\r\n' % fan)
     time.sleep(1)
     while ser.in_waiting > 0:
-        print ser.readline().rstrip('\r\n')
+        print(ser.readline().decode().rstrip('\r\n'))
 
 
 def fanSpeed(ser, peed):
     ser.write(b'cs%d\r\n' % speed)
     time.sleep(1)
     while ser.in_waiting > 0:
-        print ser.readline().rstrip('\r\n')
+        print(ser.readline().decode().rstrip('\r\n'))
 
 
 def writeSensorData(ser, sensorlog):
@@ -100,16 +100,12 @@ def testPumps(ser):
     	time.sleep(2)
 
 
-def run_threaded(job_func):
-    job_thread = threading.Thread(target=job_func)
-    job_thread.start()
+#def run_threaded(job_func):
+#    job_thread = threading.Thread(target=job_func)
+#    job_thread.start()
 
 
-def pump_cycle(ser):
-    pumpOn(ser, 0)
-    time.sleep(pumpintervall)
-    pumpOff(ser, 0)
-    time.sleep(20)
-    pumpOn(ser, 1)
-    time.sleep(10)
-    pumpOff(ser, 1)
+def pump_cycle(ser, pump, duration):
+    pumpOn(ser, pump)
+    time.sleep(duration)
+    pumpOff(ser, pump)

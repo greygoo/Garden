@@ -1,0 +1,6 @@
+Makefile.raspberry
+build-nano-atmega328/
+build-nano328/
+python/.GardenControlLib.py.swp
+python/__pycache__/
+python/backup/

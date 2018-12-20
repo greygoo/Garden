@@ -1,28 +1,15 @@
-#!/usr/bin/python
-
-import serial
-import time
-import sys
 from GardenLib import *
-
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-baudrate = 9600
-
-ser = serial.Serial()
-ser.port = sys.argv[1]
-ser.baudrate = baudrate
-ser.open()
-time.sleep(10)
-print 'Serial connection established'
-
 
 class MyWindow(Gtk.Window):
 
-    def __init__(self):
+    def __init__(self, ser):
         Gtk.Window.__init__(self, title="Garden Control")
+
+        self.ser = ser
 
         grid = Gtk.Grid()
         self.add(grid)
@@ -62,38 +49,32 @@ class MyWindow(Gtk.Window):
 
     def on_button_fan0on_clicked(self, widget):
         print("Turn on fan0")
-        fanOn(ser, 0)
+        fanOn(self.ser, 0)
 
     def on_button_fan0off_clicked(self, widget):
         print("Turn off fan 0")
-        fanOff(ser, 0)
+        fanOff(self.ser, 0)
 
     def on_button_pump0on_clicked(self, widget):
         print("Turn on pump0")
-        pumpOn(ser,0)
+        pumpOn(self.ser,0)
 
     def on_button_pump0off_clicked(self, widget):
         print("Turn on pump1")
-        pumpOff(ser,0)
+        pumpOff(self.ser,0)
 
     def on_button_pump1on_clicked(self, widget):
         print("Turn on pump1on")
-        pumpOn(ser, 1)
+        pumpOn(self.ser, 1)
 
     def on_button_pump1off_clicked(self, widget):
         print("Turn on pump1off")
-        pumpOff(ser,1)
+        pumpOff(self.ser,1)
 
     def on_button_lighton_clicked(self, widget):
         print("Turn on lighton")
-        lightOn(ser)
+        lightOn(self.ser)
 
     def on_button_lightoff_clicked(self, widget):
         print("Turn on lightoff")
-        lightOff(ser)
-
-
-win = MyWindow()
-win.connect("destroy", Gtk.main_quit)
-win.show_all()
-Gtk.main()
+        lightOff(self.ser)
