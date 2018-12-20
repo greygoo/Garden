@@ -48,7 +48,6 @@ class GardenLoop(threading.Thread):
     def run(self):
         while True:
             schedule.run_pending()
-            print("tick")
             time.sleep(1)
 
 
