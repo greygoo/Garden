@@ -55,7 +55,7 @@ def fanOff(ser, fan):
         print(ser.readline().decode().rstrip('\r\n'))
 
 
-def fanSpeed(ser, peed):
+def fanSpeed(ser, speed):
     ser.write(b'cs%d\r\n' % speed)
     time.sleep(1)
     while ser.in_waiting > 0:

@@ -38,6 +38,12 @@ class MyWindow(Gtk.Window):
         button_lightoff = Gtk.Button(label="Light OFF")
         button_lightoff.connect("clicked", self.on_button_lightoff_clicked)
 
+        ad1 = Gtk.Adjustment(0, 0, 100, 5, 10, 0)
+        self.scale_fanspeed = Gtk.Scale(orientation = Gtk.Orientation.HORIZONTAL, adjustment=ad1)
+        self.scale_fanspeed.set_hexpand(True)
+        self.scale_fanspeed.set_valign(Gtk.Align.START)
+        self.scale_fanspeed.connect("value-changed", self.on_scale_fanspeed_moved)
+
         grid.add(button_fan0on)
         grid.attach_next_to(button_fan0off, button_fan0on, Gtk.PositionType.BOTTOM, 1, 1)
         grid.attach_next_to(button_pump0on, button_fan0on, Gtk.PositionType.RIGHT, 1, 1)
@@ -46,6 +52,7 @@ class MyWindow(Gtk.Window):
         grid.attach_next_to(button_pump1off, button_pump1on, Gtk.PositionType.BOTTOM, 1, 1)
         grid.attach_next_to(button_lighton, button_pump1on, Gtk.PositionType.RIGHT, 1, 1)
         grid.attach_next_to(button_lightoff, button_lighton, Gtk.PositionType.BOTTOM, 1, 1)
+        grid.attach_next_to(self.scale_fanspeed, button_fan0off, Gtk.PositionType.BOTTOM, 1, 1)
 
     def on_button_fan0on_clicked(self, widget):
         print("Turn on fan0")
@@ -78,3 +85,8 @@ class MyWindow(Gtk.Window):
     def on_button_lightoff_clicked(self, widget):
         print("Turn on lightoff")
         lightOff(self.ser)
+
+    def on_scale_fanspeed_moved(self, event):
+        fan_speed = int(self.scale_fanspeed.get_value())
+        print("Fan Speed is " + str(fan_speed))
+        fanSpeed(self.ser, fan_speed)
