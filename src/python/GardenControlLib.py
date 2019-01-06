@@ -6,10 +6,8 @@ from gi.repository import Gtk
 
 class GardenControlWindow(Gtk.Window):
 
-    def __init__(self, ser):
+    def __init__(self):
         Gtk.Window.__init__(self, title="Garden Control")
-
-        self.ser = ser
 
         grid = Gtk.Grid()
         self.add(grid)
@@ -56,37 +54,37 @@ class GardenControlWindow(Gtk.Window):
 
     def on_button_fan0on_clicked(self, widget):
         print("Turn on fan0")
-        fanOn(self.ser, 0)
+        fanOn(0)
 
     def on_button_fan0off_clicked(self, widget):
         print("Turn off fan 0")
-        fanOff(self.ser, 0)
+        fanOff(0)
 
     def on_button_pump0on_clicked(self, widget):
         print("Turn on pump0")
-        pumpOn(self.ser,0)
+        pumpOn(0)
 
     def on_button_pump0off_clicked(self, widget):
         print("Turn on pump1")
-        pumpOff(self.ser,0)
+        pumpOff(0)
 
     def on_button_pump1on_clicked(self, widget):
         print("Turn on pump1on")
-        pumpOn(self.ser, 1)
+        pumpOn(1)
 
     def on_button_pump1off_clicked(self, widget):
         print("Turn on pump1off")
-        pumpOff(self.ser,1)
+        pumpOff(1)
 
     def on_button_lighton_clicked(self, widget):
         print("Turn on lighton")
-        lightOn(self.ser)
+        lightOn()
 
     def on_button_lightoff_clicked(self, widget):
         print("Turn on lightoff")
-        lightOff(self.ser)
+        lightOff()
 
     def on_scale_fanspeed_moved(self, event):
         fan_speed = int(self.scale_fanspeed.get_value())
         print("Fan Speed is " + str(fan_speed))
-        fanSpeed(self.ser, fan_speed)
+        fanSpeed(fan_speed)

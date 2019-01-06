@@ -39,8 +39,16 @@ void sensorsInit(){
 float getTempWater() {
   float temp = -1;
 
-  sensors.requestTemperatures();
-  temp = sensors.getTempCByIndex(0);
+  for (int retry = 5; retry > 5; retry--) {
+    sensors.requestTemperatures();
+    temp = sensors.getTempCByIndex(0);
+    if (temp == -127) {
+      Serial.println("Error reading water temperature");
+    }
+    else {
+      break;
+    }
+  }
   
   return temp;
 }
@@ -59,12 +67,12 @@ float getTempAir(int sensor) {
       dht2.temperature().getEvent(&event);
       break;
     default :
-      Serial.print("debug,Sensor does not exist: ");
+      Serial.print("Sensor does not exist: ");
       Serial.println(sensor);
   }
   
   if (isnan(event.temperature)) {
-    Serial.println("debug,Error reading temperature!");
+    Serial.println("Error reading air temperature!");
   }
   else {
     temp = event.temperature;
@@ -87,12 +95,12 @@ float getHumAir(int sensor) {
       dht2.humidity().getEvent(&event);
       break;
     default :
-      Serial.print("debug,Sensor does not exist: ");
+      Serial.print("Sensor does not exist: ");
       Serial.println(sensor);
   }
   
   if (isnan(event.relative_humidity)) {
-    Serial.println("debug,Error reading humidity!");
+    Serial.println("Error reading humidity!");
   }
   else {
     hum = event.relative_humidity;
