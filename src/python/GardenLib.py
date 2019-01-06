@@ -64,13 +64,14 @@ def fanSpeed(ser, speed):
 
 def writeSensorData(ser, sensorlog):
     sensor_data = getData(ser)
+    # sensor_data: [time, Temp_Air, Humidity, Temp_Water, '0.00', '0.00']
     print('debug: ')
     print(sensor_data)
     print('Time             : ')
     print(sensor_data[0])
-    print('Temperature Air  : %f' % float(sensor_data[0]))
-    print('Temperature Water: %f' % float(sensor_data[2]))
-    print('Humidity         : %f' % float(sensor_data[1]))
+    print('Temperature Air  : %f' % float(sensor_data[1]))
+    print('Temperature Water: %f' % float(sensor_data[3]))
+    print('Humidity         : %f' % float(sensor_data[2]))
     log = open(sensorlog, 'a')
     for data in sensor_data:
         log.write(data)
