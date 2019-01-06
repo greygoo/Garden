@@ -73,8 +73,8 @@ def writeSensorData(ser, sensorlog):
     print('Temperature Water: %f' % float(sensor_data[3]))
     print('Humidity         : %f' % float(sensor_data[2]))
     # check if water temperature read failed
-    if sensor_data[3] < 0:
-        sensor_data[3] = 0
+    if float(sensor_data[3]) < 0:
+        sensor_data[3] = '0'
     log = open(sensorlog, 'a')
     for data in sensor_data:
         log.write(data)
