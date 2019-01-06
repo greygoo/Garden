@@ -8,7 +8,7 @@ def getData(ser):
         serial_line = ser.readline().decode().rstrip('\r\n').split(",");
         print(serial_line)
         if serial_line[0] == 'data':
-            serial_line.pop(0)
+            #serial_line.pop(0)
             serial_line[0] = str(int(time.time()))
             return serial_line
 
@@ -64,6 +64,10 @@ def fanSpeed(ser, speed):
 
 def writeSensorData(ser, sensorlog):
     sensor_data = getData(ser)
+    print('debug: ')
+    print(sensor_data)
+    print('Time             : ')
+    print(sensor_data[0])
     print('Temperature Air  : %f' % float(sensor_data[0]))
     print('Temperature Water: %f' % float(sensor_data[2]))
     print('Humidity         : %f' % float(sensor_data[1]))
