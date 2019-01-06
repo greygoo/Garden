@@ -4,8 +4,8 @@
 void pumpInit(){
   pinMode(PUMP0_PIN, OUTPUT);
   pinMode(PUMP1_PIN, OUTPUT);
-  digitalWrite(PUMP0_PIN, HIGH);
-  digitalWrite(PUMP1_PIN, HIGH);
+// digitalWrite(PUMP0_PIN, HIGH);
+//  digitalWrite(PUMP1_PIN, HIGH);
 }
 
 

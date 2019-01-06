@@ -7,7 +7,7 @@ RCSwitch powerSwitch = RCSwitch();
 void lightInit() {
   powerSwitch.enableTransmit(10);
   powerSwitch.setProtocol(1);
-  lightOff();
+  //lightOff();
 }
 
 void lightOff(){
