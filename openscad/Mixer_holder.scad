@@ -1,10 +1,10 @@
-$BAR=[15.70,15.70,15.70];
+$BAR=[15.70,16,16];
 $DISTANCE=10;
 $WALL=2;
 $DRILLHOLE=1;
-$SCREWHEAD=2;
+$SCREWHEAD=3;
 $MOTOR=[28.57, 24.5 + $SCREWHEAD, 42.7];
-$MOTORFRONT=9.75;
+$MOTORFRONT=10;
 
 //CONNECTING DRILLHOLES
 module drillholes(){
@@ -73,7 +73,12 @@ difference(){
     drillholes();
 }
 
-difference(){
+/*difference(){
     motorblock();
     translate([0,$WALL,0]) drillholes();
-}
+}*/
+
+/*difference(){
+    cylinder(20,5.65/2,5.6/2);
+    cylinder(20,2.4/2,2.4/2);
+}*/

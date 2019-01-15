@@ -1,5 +1,6 @@
 #define DHT_PIN1           A0    // pin for air temp/humidity sensor
-#define DHT_PIN2           A1
+#define ECC_PIN            A1
+#define PH_PIN		   A2
 #define DHT_TYPE           DHT22
 
 #define DS18B20PIN         3     // pin for water temp sensore
