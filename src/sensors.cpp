@@ -1,5 +1,4 @@
 #include "sensors.h"
-#include "lcd.h"
 
 DHT_Unified dht1(DHT_PIN1, DHT_TYPE);
 DHT_Unified dht2(DHT_PIN2, DHT_TYPE);
@@ -30,10 +29,10 @@ void sensorsInit(){
   sensor_t sensor;
 
   dht1.temperature().getSensor(&sensor);
-  Serial.print  ("Unique ID:    "); Serial.println(sensor.sensor_id);
+  Serial.print  ("debug,Unique ID:    "); Serial.println(sensor.sensor_id);
 
   dht1.temperature().getSensor(&sensor);
-  Serial.print  ("Unique ID:    "); Serial.println(sensor.sensor_id); 
+  Serial.print  ("deubg,Unique ID:    "); Serial.println(sensor.sensor_id); 
 }
 
 
@@ -60,12 +59,12 @@ float getTempAir(int sensor) {
       dht2.temperature().getEvent(&event);
       break;
     default :
-      Serial.print("Sensor does not exist: ");
+      Serial.print("debug,Sensor does not exist: ");
       Serial.println(sensor);
   }
   
   if (isnan(event.temperature)) {
-    Serial.println("Error reading temperature!");
+    Serial.println("debug,Error reading temperature!");
   }
   else {
     temp = event.temperature;
@@ -88,12 +87,12 @@ float getHumAir(int sensor) {
       dht2.humidity().getEvent(&event);
       break;
     default :
-      Serial.print("Sensor does not exist: ");
+      Serial.print("debug,Sensor does not exist: ");
       Serial.println(sensor);
   }
   
   if (isnan(event.relative_humidity)) {
-    Serial.println("Error reading humidity!");
+    Serial.println("debug,Error reading humidity!");
   }
   else {
     hum = event.relative_humidity;
@@ -116,28 +115,48 @@ float getEcc() {
 
 
 void printValuesSerial(sensorValues values) {
-  Serial.println();
-  Serial.println("-----------");
-  Serial.print("tempAir1:  ");
+  Serial.println("output,-----------");
+  Serial.print("output,tempAir1:  ");
   Serial.println(values.tempAir1);
-  Serial.print("tempAir2:  ");
+  Serial.print("output,tempAir2:  ");
   Serial.println(values.tempAir2);
-  Serial.print("humAir:    ");
+  Serial.print("output,humAir:    ");
   Serial.println(values.humAir1);
-  Serial.print("humair2:   ");
+  Serial.print("output,humair2:   ");
   Serial.println(values.humAir2);
-  Serial.print("tempWater: ");
+  Serial.print("output,tempWater: ");
   Serial.println(values.tempWater);
-  Serial.print("pH:        ");
+  Serial.print("output,pH:        ");
   Serial.println(values.pH);
-  Serial.print("ecc:       ");
+  Serial.print("output,ecc:       ");
   Serial.println(values.ecc);
-  Serial.println("-----------");
-  Serial.println();  
+  Serial.println("output,-----------");
 }
 
 
-void printValues(sensorValues values) {
-  printValuesLCD(values);
-  printValuesSerial(values);
+void printSimpleSerial(sensorValues values) {
+  Serial.print("data,");
+  Serial.print(values.tempAir1);
+  Serial.print(",");
+  Serial.print(values.humAir1);
+  Serial.print(",");
+  Serial.print(values.tempWater);
+  Serial.print(",");
+  Serial.print(values.pH);
+  Serial.print(",");
+  Serial.println(values.ecc);
+}
+
+
+void printSensorData() {
+  sensorValues currentValues = { 0,0,0,0,0,0,0 };
+  currentValues = readSensors();
+  printValuesSerial(currentValues);
+}
+
+
+void printSimpleData() {
+  sensorValues currentValues = { 0,0,0,0,0,0,0 };
+  currentValues = readSensors();
+  printSimpleSerial(currentValues);
 }

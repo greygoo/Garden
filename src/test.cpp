@@ -1,8 +1,8 @@
 #include "test.h"
 
-void pumpTest(){
-  pumpOn();
-  Alarm.delay(1000);
-  pumpOff();
+void pumpTest(int pump){
+  pumpOn(pump);
+  delay(200);
+  pumpOff(pump);
 }
 

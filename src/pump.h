@@ -1,13 +1,10 @@
 #include <Arduino.h>
-#include <TimeAlarms.h>
 #include "define.h"
 
 void pumpInit();
 
-void ctrlWaterPump(bool state);
+void ctrlWaterPump(int pump, bool state);
 
-void pumpOn();
+void pumpOn(int pump);
 
-void pumpOff();
-
-void pumpIntervall();
+void pumpOff(int pump);

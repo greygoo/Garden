@@ -1,0 +1,5 @@
+openscad/*.gco
+kicad/Garden-cache.lib
+kicad/Garden.bak
+kicad/Garden.kicad_pcb-bak
+src/python/GardenLib.pyc
