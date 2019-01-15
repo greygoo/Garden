@@ -8,7 +8,7 @@ struct sensorValues {
   float humAir1;
   float humAir2;
   float pH;
-  float ecc;
+  float tds;
 };
 
 #endif

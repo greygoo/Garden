@@ -11,7 +11,7 @@ sensorValues readSensors();
 
 void sensorsInit();
 
-float getPPM();
+float getTDS();
 
 float getTempWater();
 
@@ -20,8 +20,6 @@ float getTempAir(int sensor);
 float getHumAir(int sensor);
 
 float getPH();
-
-float getEcc();
 
 void printValuesSerial(sensorValues values);
 

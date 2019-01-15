@@ -1,6 +1,6 @@
 #define DHT_PIN1           A0    // pin for air temp/humidity sensor
-#define DHT_PIN2           A3    // pin for air temp/humidity sensor
-#define ECC_PIN            A1
+//#define DHT_PIN2           A3    // pin for air temp/humidity sensor
+#define TDS_PIN            A1
 #define PH_PIN		   A2
 #define DHT_TYPE           DHT22
 
@@ -15,4 +15,4 @@
 #define INITIAL_FAN_CYCLE  35.0  // set fan to 50% speed
 
 #define VREF 		   5.0   // analog reference voltage(Volt) of the ADC
-#define PPMCOUNT  	   30    // sum of sample point
+//#define PPMCOUNT  	   30    // sum of sample point

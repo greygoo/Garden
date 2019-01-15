@@ -1,7 +1,7 @@
 #include "sensors.h"
 
 DHT_Unified dht1(DHT_PIN1, DHT_TYPE);
-DHT_Unified dht2(DHT_PIN2, DHT_TYPE);
+//DHT_Unified dht2(DHT_PIN2, DHT_TYPE);
 
 OneWire oneWire(DS18B20PIN);
 DallasTemperature sensors(&oneWire);
@@ -13,14 +13,13 @@ float tdsValue = 0,temperature = 25;
 
 sensorValues readSensors() {
   sensorValues current;
-  current.ecc = getPPM();
   current.tempWater = getTempWater();
   current.tempAir1  = getTempAir(1);
   //current.tempAir2  = getTempAir(2);
-  current.humAir1  = getHumAir(1);
+  current.humAir1   = getHumAir(1);
   //current.humAir2  = getHumAir(2);
   current.pH        = getPH();
-  current.ecc       = getEcc();
+  current.tds 	    = getTDS();
   return current;
 }
 
@@ -31,11 +30,11 @@ void sensorsInit(){
 
   //init dht
   dht1.begin();
-  dht2.begin();
+  //dht2.begin();
 
-  //init PPM
-  pinMode(ECC_PIN,INPUT);
-  gravityTds.setPin(ECC_PIN);
+  //init TDS 
+  pinMode(TDS_PIN,INPUT);
+  gravityTds.setPin(TDS_PIN);
   gravityTds.setAref(VREF);  //reference voltage on ADC, default 5.0V on Arduino UNO
   gravityTds.setAdcRange(1024);  //1024 for 10bit ADC;4096 for 12bit ADC
   gravityTds.begin();
@@ -51,7 +50,7 @@ void sensorsInit(){
 }
 
 
-float getPPM() {
+float getTDS() {
     temperature = getTempWater();
     gravityTds.setTemperature(temperature);  // execute temperature compensation
     gravityTds.update();  //sample and calculate 
@@ -80,7 +79,7 @@ float getTempAir(int sensor) {
       dht1.temperature().getEvent(&event);
       break;
     case 2 :
-      dht2.temperature().getEvent(&event);
+      //dht2.temperature().getEvent(&event);
       break;
     default :
       Serial.print("debug,Sensor does not exist: ");
@@ -108,7 +107,7 @@ float getHumAir(int sensor) {
       dht1.humidity().getEvent(&event);
       break;
     case 2 :
-      dht2.humidity().getEvent(&event);
+      //dht2.humidity().getEvent(&event);
       break;
     default :
       Serial.print("debug,Sensor does not exist: ");
@@ -132,12 +131,6 @@ float getPH() {
 }
 
 
-float getEcc() {
-  float ecc = 0;
-  return ecc;
-}
-
-
 void printValuesSerial(sensorValues values) {
   Serial.println("output,-----------");
   Serial.print("output,tempAir1:  ");
@@ -152,8 +145,8 @@ void printValuesSerial(sensorValues values) {
   Serial.println(values.tempWater);
   Serial.print("output,pH:        ");
   Serial.println(values.pH);
-  Serial.print("output,ecc:       ");
-  Serial.println(values.ecc);
+  Serial.print("output,tds:       ");
+  Serial.println(values.tds);
   Serial.println("output,-----------");
 }
 
@@ -168,7 +161,7 @@ void printSimpleSerial(sensorValues values) {
   Serial.print(",");
   Serial.print(values.pH);
   Serial.print(",");
-  Serial.println(values.ecc);
+  Serial.println(values.tds);
 }
 
 
