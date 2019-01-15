@@ -31,8 +31,8 @@ class GardenLoop(threading.Thread):
         self.ser = ser
         self.sensorlog = '/home/pi/sensorlog.csv'
 
-        spray_duration = 5 
-        empty_duration = 10
+        spray_duration = 1.5
+        empty_duration = 8
 
         # define pump ids
         spray_pump = 0
@@ -42,8 +42,8 @@ class GardenLoop(threading.Thread):
         schedule.every().minute.do(writeSensorData, self.ser, self.sensorlog)
         schedule.every().day.at('06:00').do(lightOn, ser)
         schedule.every().day.at('00:00').do(lightOff, ser)
-        schedule.every(5).minutes.do(pump_cycle, ser, spray_pump, spray_duration)
-        schedule.every(50).minutes.do(pump_cycle, ser, empty_pump, empty_duration)
+        schedule.every(4).minutes.do(pump_cycle, ser, spray_pump, spray_duration)
+        schedule.every(40).minutes.do(pump_cycle, ser, empty_pump, empty_duration)
 
     def run(self):
         while True:
