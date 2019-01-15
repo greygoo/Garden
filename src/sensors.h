@@ -4,11 +4,14 @@
 #include <DallasTemperature.h>
 #include "define.h"
 #include "struct.h"
+#include <GravityTDS.h>
 
 
 sensorValues readSensors();
 
 void sensorsInit();
+
+float getPPM();
 
 float getTempWater();
 

@@ -13,3 +13,6 @@
 #define FAN0_PIN           7     // power pin for fan0
 #define FAN1_PIN	   6	 // power pin for fan1
 #define INITIAL_FAN_CYCLE  35.0  // set fan to 50% speed
+
+#define VREF 		   5.0   // analog reference voltage(Volt) of the ADC
+#define PPMCOUNT  	   30    // sum of sample point

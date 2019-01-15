@@ -6,9 +6,14 @@ DHT_Unified dht2(DHT_PIN2, DHT_TYPE);
 OneWire oneWire(DS18B20PIN);
 DallasTemperature sensors(&oneWire);
 
+GravityTDS gravityTds;
+
+float tdsValue = 0,temperature = 25;
+
 
 sensorValues readSensors() {
   sensorValues current;
+  current.ecc = getPPM();
   current.tempWater = getTempWater();
   current.tempAir1  = getTempAir(1);
   //current.tempAir2  = getTempAir(2);
@@ -21,9 +26,19 @@ sensorValues readSensors() {
 
 
 void sensorsInit(){
+  //init oneWire for Water Temperature	
   sensors.begin();
+
+  //init dht
   dht1.begin();
   dht2.begin();
+
+  //init PPM
+  pinMode(ECC_PIN,INPUT);
+  gravityTds.setPin(ECC_PIN);
+  gravityTds.setAref(VREF);  //reference voltage on ADC, default 5.0V on Arduino UNO
+  gravityTds.setAdcRange(1024);  //1024 for 10bit ADC;4096 for 12bit ADC
+  gravityTds.begin();
 
   //Water temperature sensor
   sensor_t sensor;
@@ -36,8 +51,17 @@ void sensorsInit(){
 }
 
 
+float getPPM() {
+    temperature = getTempWater();
+    gravityTds.setTemperature(temperature);  // execute temperature compensation
+    gravityTds.update();  //sample and calculate 
+    tdsValue = gravityTds.getTdsValue();  // then get the value
+    return tdsValue;
+}
+
+
 float getTempWater() {
-  float temp = -1;
+  float temp = 25;
 
   sensors.requestTemperatures();
   temp = sensors.getTempCByIndex(0);
