@@ -1,8 +1,8 @@
 BOARD_TAG   = nano
 BOARD_SUB   = atmega328
 
-ARDUINO_DIR = /home/chuller/bin/arduino
-USER_LIB_PATH = /home/chuller/src/arduino/Garden/src/lib
+#ARDUINO_DIR = <put path to your arduino ide installation here> 
+USER_LIB_PATH = ./lib
 ARDUINO_LIBS = DHT-sensor-library Arduino-Temperature-Control-Library u8g2/cppsrc u8g2/csrc Adafruit_Sensor OneWire Time TimeAlarms rc-switch TimerOne SPI Wire
 ARDUINO_PORT = /dev/ttyUSB0
 
