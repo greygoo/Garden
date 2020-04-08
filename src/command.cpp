@@ -24,8 +24,10 @@ void handleCommand(String command) {
   int command_length = command.length();
   char command_char[command_length];
   command.toCharArray(command_char, command_length);
-  if (command_char[0] == 'c') {
-    switch (command_char[1]) {
+  if (command_char[0] == 'c')
+  {
+    switch (command_char[1])
+    {
       case 'l':
 	lightOff();
       break;
@@ -89,6 +91,31 @@ void handleCommand(String command) {
 
       default:
         Serial.print("debug,Unkown command: ");
+	Serial.println(command_char[1]);
+      break;
+    }
+  }
+  if (command_char[0] == 'p') // programming
+  {
+    switch (command_char[1])
+    {
+      case 'p':
+      {
+        int pump_num = parseInt(command_char[2]);
+	int run_time = parseInt(command_char[3]);
+	int stop_time = parseInt(command_char[4]);
+      }
+      break;
+
+      case 'l':
+      {
+	int run_time = parseInt(command_char[2]);
+	int stop_time = parseInt(command_char[3]);
+      }
+      break;
+
+      default:
+        Serial.print("debug,Unkown programming command: ");
 	Serial.println(command_char[1]);
       break;
     }

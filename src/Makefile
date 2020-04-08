@@ -1,5 +1,7 @@
-BOARD_TAG   = nano
-BOARD_SUB   = atmega328
+#BOARD_TAG   = nano
+#BOARD_SUB   = atmega328
+BOARD_TAG   = pro
+BOARD_SUB   = 16MHzatmega328
 
 PWD = $(shell pwd)
 
