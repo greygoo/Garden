@@ -8,6 +8,7 @@ class GardenControlWindow(Gtk.Window):
 
     def __init__(self, ser):
         Gtk.Window.__init__(self, title="Garden Control")
+        self.set_size_request(750,550)
 
         self.ser = ser
 
@@ -16,27 +17,43 @@ class GardenControlWindow(Gtk.Window):
 
         self.button_fan0on = Gtk.Button(label="Fan ON")
         self.button_fan0on.connect("clicked", self.on_button_fan0on_clicked)
+        self.button_fan0on.set_hexpand(True)
+        self.button_fan0on.set_vexpand(True)
 
         self.button_fan0off = Gtk.Button(label="Fan OFF")
         self.button_fan0off.connect("clicked", self.on_button_fan0off_clicked)
+        self.button_fan0off.set_hexpand(True)
+        self.button_fan0off.set_vexpand(True)
 
         self.button_pump0on = Gtk.Button(label="Pump0 ON")
         self.button_pump0on.connect("clicked", self.on_button_pump0on_clicked)
+        self.button_pump0on.set_hexpand(True)
+        self.button_pump0on.set_vexpand(True)
 
         self.button_pump0off = Gtk.Button(label="Pump0 OFF")
         self.button_pump0off.connect("clicked", self.on_button_pump0off_clicked)
+        self.button_pump0off.set_hexpand(True)
+        self.button_pump0off.set_vexpand(True)
 
         self.button_pump1on = Gtk.Button(label="Pump1 ON")
         self.button_pump1on.connect("clicked", self.on_button_pump1on_clicked)
+        self.button_pump1on.set_hexpand(True)
+        self.button_pump1on.set_vexpand(True)
 
         self.button_pump1off = Gtk.Button(label="Pump1 OFF")
         self.button_pump1off.connect("clicked", self.on_button_pump1off_clicked)
+        self.button_pump1off.set_hexpand(True)
+        self.button_pump1off.set_vexpand(True)
 
         self.button_lighton = Gtk.Button(label="Light ON")
         self.button_lighton.connect("clicked", self.on_button_lighton_clicked)
+        self.button_lighton.set_hexpand(True)
+        self.button_lighton.set_vexpand(True)
 
         self.button_lightoff = Gtk.Button(label="Light OFF")
         self.button_lightoff.connect("clicked", self.on_button_lightoff_clicked)
+        self.button_lightoff.set_hexpand(True)
+        self.button_lightoff.set_vexpand(True)
 
         ad1 = Gtk.Adjustment(0, 0, 100, 5, 10, 0)
         self.scale_fanspeed = Gtk.Scale(orientation = Gtk.Orientation.HORIZONTAL, adjustment=ad1)
