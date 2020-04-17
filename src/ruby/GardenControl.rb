@@ -30,13 +30,3 @@ post "/commands" do
   puts " parameter is: #{params[:command]}"
   $i.send(params[:command])
 end
-
-get '/test' do
-  stream do |out|
-    out << "It's gonna be legen -\n"
-    sleep 10 
-    out << " (wait for it) \n"
-    sleep 10
-    out << "- dary!\n"
-  end
-end
