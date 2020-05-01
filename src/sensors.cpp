@@ -28,11 +28,12 @@ void sensorsInit(){
   //Water temperature sensor
   sensor_t sensor;
 
+  //Humidity sensors
   dht1.temperature().getSensor(&sensor);
-  Serial.print  ("debug,Unique ID:    "); Serial.println(sensor.sensor_id);
+  D_PRINTLN((String)"D: Unique ID: "+(String)sensor.sensor_id);
 
-  dht1.temperature().getSensor(&sensor);
-  Serial.print  ("deubg,Unique ID:    "); Serial.println(sensor.sensor_id); 
+  dht2.temperature().getSensor(&sensor);
+  D_PRINTLN((String)"D: Unique ID: "+(String)sensor.sensor_id);
 }
 
 
@@ -59,12 +60,11 @@ float getTempAir(int sensor) {
       dht2.temperature().getEvent(&event);
       break;
     default :
-      Serial.print("debug,Sensor does not exist: ");
-      Serial.println(sensor);
+      D_PRINTLN((String)"D: Sensor does not exist: "+(String)sensor);
   }
   
   if (isnan(event.temperature)) {
-    Serial.println("debug,Error reading temperature!");
+    D_PRINTLN((String)"D: Error reading temperature!");
   }
   else {
     temp = event.temperature;
@@ -87,12 +87,11 @@ float getHumAir(int sensor) {
       dht2.humidity().getEvent(&event);
       break;
     default :
-      Serial.print("debug,Sensor does not exist: ");
-      Serial.println(sensor);
+      D_PRINTLN((String)"D: Sensor does not exist: "+(String)sensor);
   }
   
   if (isnan(event.relative_humidity)) {
-    Serial.println("debug,Error reading humidity!");
+    D_PRINTLN((String)"D: Error reading humidity!");
   }
   else {
     hum = event.relative_humidity;

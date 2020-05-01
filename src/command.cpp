@@ -4,9 +4,9 @@ void handleSerial() {
   String incomingString;
   while (Serial.available() > 0) {
     incomingString = Serial.readStringUntil('\n');
-    Serial.println("debug,Received command: " + incomingString);
+    D_PRINTLN((String)"D: Received command: "+incomingString);
+    handleCommand(incomingString);
   }
-  handleCommand(incomingString);
 }
 
 
@@ -29,7 +29,7 @@ void handleCommand(String command) {
     switch (command_char[1])
     {
       case 'l':
-	lightOff();
+        lightOff();
       break;
 
       case 'L':
@@ -38,42 +38,41 @@ void handleCommand(String command) {
 
       case 'p':
       {
-	int pump_num = parseInt(command_char[2]);
-	pumpOff(pump_num);
+        int pump_num = parseInt(command_char[2]);
+        ctrlWaterPump(pump_num, 0);
       }
       break;
 
       case 'P':
       {
-	int pump_num = parseInt(command_char[2]);
-	pumpOn(pump_num);
+        int pump_num = parseInt(command_char[2]);
+        ctrlWaterPump(pump_num, 1);
       }
       break; 
 
       case 'f':
       {
-	int fan_num = parseInt(command_char[2]);
-	fanOff(fan_num);
+        int fan_num = parseInt(command_char[2]);
+        ctrlFan(fan_num, 0);
       }
       break;
 
       case 'F':
       {
         int fan_num = parseInt(command_char[2]);
-	fanOn(fan_num);
+        ctrlFan(fan_num, 0);
       }
       break;
 
       case 's':
       {
-	int fan_speed = parseInt(command_char[2]);
-	if (fan_speed >= 0 && fan_speed <= '9') {
-	  setFanSpeed(FAN0_PWM_PIN, (fan_speed * 10));
-	}
-	else {
-	  Serial.print("debug,Error fan speed: ");
-	  Serial.println(fan_speed);
-	}
+        int fan_speed = parseInt(command_char[2]);
+        if (fan_speed >= 0 && fan_speed <= '9') {
+          setFanSpeed(FAN0_PWM_PIN, (fan_speed * 10));
+        }
+        else {
+          D_PRINTLN((String)"D: Error fan speed: "+fan_speed);
+        }
       }
       break;
 
@@ -85,13 +84,12 @@ void handleCommand(String command) {
 
       case 'D':
       {
-	printSimpleData();
+        printSimpleData();
       }
       break;
 
       default:
-        Serial.print("debug,Unkown command: ");
-	Serial.println(command_char[1]);
+        D_PRINTLN((String)"D: Unkown command: "+(String)command_char[1]);
       break;
     }
   }
@@ -102,21 +100,20 @@ void handleCommand(String command) {
       case 'p':
       {
         int pump_num = parseInt(command_char[2]);
-	int run_time = parseInt(command_char[3]);
-	int stop_time = parseInt(command_char[4]);
+        int run_time = parseInt(command_char[3]);
+        int stop_time = parseInt(command_char[4]);
       }
       break;
 
       case 'l':
       {
-	int run_time = parseInt(command_char[2]);
-	int stop_time = parseInt(command_char[3]);
+        int run_time = parseInt(command_char[2]);
+        int stop_time = parseInt(command_char[3]);
       }
       break;
 
       default:
-        Serial.print("debug,Unkown programming command: ");
-	Serial.println(command_char[1]);
+        D_PRINTLN((String)"D: Unkown programming command: "+(String)command_char[1]);
       break;
     }
   }
