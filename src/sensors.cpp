@@ -1,8 +1,6 @@
 #include "sensors.h"
 
-DHT_Unified dht1(DHT_PIN1, DHT_TYPE);
-DHT_Unified dht2(DHT_PIN2, DHT_TYPE);
-
+DHT_Unified dht[DHT_NUM] = {DHT_Unified(DHT_PIN1, DHT_TYPE), DHT_Unified(DHT_PIN1, DHT_TYPE)};
 OneWire oneWire(DS18B20PIN);
 DallasTemperature sensors(&oneWire);
 
@@ -22,17 +20,17 @@ sensorValues readSensors() {
 
 void sensorsInit(){
   sensors.begin();
-  dht1.begin();
-  dht2.begin();
+  dht[0].begin();
+  dht[1].begin();
 
   //Water temperature sensor
   sensor_t sensor;
 
   //Humidity sensors
-  dht1.temperature().getSensor(&sensor);
+  dht[0].temperature().getSensor(&sensor);
   D_PRINTLN((String)"D: Unique ID: "+(String)sensor.sensor_id);
 
-  dht2.temperature().getSensor(&sensor);
+  dht[1].temperature().getSensor(&sensor);
   D_PRINTLN((String)"D: Unique ID: "+(String)sensor.sensor_id);
 }
 
@@ -50,18 +48,14 @@ float getTempWater() {
 float getTempAir(int sensor) {
   float temp = -1;
   
-  sensors_event_t event;
-  
-  switch(sensor) {
-    case 1 :
-      dht1.temperature().getEvent(&event);
-      break;
-    case 2 :
-      dht2.temperature().getEvent(&event);
-      break;
-    default :
-      D_PRINTLN((String)"D: Sensor does not exist: "+(String)sensor);
+  if(sensor >= DHT_NUM) {
+    D_PRINTLN((String)"D: Sensor does not exist: "+(String)sensor);
+    return temp;
   }
+
+  sensors_event_t event;
+
+  dht[sensor].temperature().getEvent(&event);
   
   if (isnan(event.temperature)) {
     D_PRINTLN((String)"D: Error reading temperature!");
@@ -77,18 +71,14 @@ float getTempAir(int sensor) {
 float getHumAir(int sensor) {
   float hum = -1;
 
+  if(sensor >= DHT_NUM) {
+    D_PRINTLN((String)"D: Sensor does not exist: "+(String)sensor);
+    return hum;
+  }
+
   sensors_event_t event;
   
-  switch(sensor) {
-    case 1 :
-      dht1.humidity().getEvent(&event);
-      break;
-    case 2 :
-      dht2.humidity().getEvent(&event);
-      break;
-    default :
-      D_PRINTLN((String)"D: Sensor does not exist: "+(String)sensor);
-  }
+  dht[sensor].humidity().getEvent(&event);
   
   if (isnan(event.relative_humidity)) {
     D_PRINTLN((String)"D: Error reading humidity!");

@@ -15,6 +15,7 @@ void setup() {
   fanInit();
   pumpInit();
   lightInit();
+  sensorsInit();
 
 }
 

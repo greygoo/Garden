@@ -1,3 +1,4 @@
+#define DHT_NUM            2    // Number of air temp/humidity sensor
 #define DHT_PIN1           A0    // pin for air temp/humidity sensor
 #define DHT_PIN2           A3    // pin for air temp/humidity sensor
 #define ECC_PIN            A1
