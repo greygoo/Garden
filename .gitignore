@@ -2,4 +2,10 @@ openscad/*.gco
 kicad/Garden-cache.lib
 kicad/Garden.bak
 kicad/Garden.kicad_pcb-bak
+kicad/_saved_Garden.sch
+src/.vscode
+src/build*
 src/python/GardenLib.pyc
+src/ruby/playground
+src/ruby/config.yaml
+src/ruby/.config
