@@ -3,3 +3,8 @@ kicad/Garden-cache.lib
 kicad/Garden.bak
 kicad/Garden.kicad_pcb-bak
 src/python/GardenLib.pyc
+kicad/Garden2/
+src/.vscode/
+src/build*
+src/ruby/playground
+src/ruby/.config
