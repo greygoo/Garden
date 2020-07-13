@@ -20,28 +20,10 @@ void ctrlWaterPump(int pump, bool state){
     break;
 
     default:
-      Serial.print("debug,Error unknown pump: ");
-      Serial.println(pump);
+      D_PRINTLN((String)"D: Error unknown pump: "+pump);
       return;
     break;
   }
   
-  Serial.print("debug,Waterpump ");
-  Serial.print(pump);
-  Serial.print(" set to: ");
-  Serial.println(state);
-}
-
-
-void pumpOn(int pump){
-  ctrlWaterPump(pump, 0);
-  Serial.print("debug,Turn on pump ");
-  Serial.println(pump);
-}
-
-
-void pumpOff(int pump) {
-  ctrlWaterPump(pump, 1);
-  Serial.print("debug,Turn off pump ");
-  Serial.println(pump);
+  D_PRINTLN((String)"D: Waterpump "+pump+" set to: "+state);
 }

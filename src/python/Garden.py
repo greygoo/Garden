@@ -29,7 +29,7 @@ class GardenLoop(threading.Thread):
         threading.Thread.__init__(self)
 
         self.ser = ser
-        self.sensorlog = '/home/pi/sensorlog.csv'
+        self.sensorlog = '/tmp/sensorlog.csv'
 
         spray_duration = 1.5
         empty_duration = 8

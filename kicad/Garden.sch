@@ -194,27 +194,27 @@ Text GLabel 2900 2700 3    60   Output ~ 0
 VCC
 Text GLabel 3600 4950 0    60   Input ~ 0
 VCC
-Text GLabel 6950 3150 0    60   Input ~ 0
+Text GLabel 7600 2200 0    60   Input ~ 0
 D4
 Text GLabel 6200 3350 2    60   Output ~ 0
 D4
-Text GLabel 6950 3250 0    60   Input ~ 0
+Text GLabel 7600 2300 0    60   Input ~ 0
 D5
 Text GLabel 6200 3450 2    60   Output ~ 0
 D5
-Text GLabel 6950 3350 0    60   Input ~ 0
+Text GLabel 7600 2400 0    60   Input ~ 0
 D6
 Text GLabel 6200 3550 2    60   Output ~ 0
 D6
 Text GLabel 6200 3650 2    60   Output ~ 0
 D7
-Text GLabel 6950 3450 0    60   Input ~ 0
+Text GLabel 7600 2500 0    60   Input ~ 0
 D7
-Text GLabel 6950 4050 0    60   Input ~ 0
+Text GLabel 7600 2800 0    60   Input ~ 0
 D10
 Text GLabel 6200 3950 2    60   Output ~ 0
 D10
-Text GLabel 6950 4950 0    60   Input ~ 0
+Text GLabel 7600 2700 0    60   Input ~ 0
 D9
 Text GLabel 6200 3850 2    60   Output ~ 0
 D9
@@ -268,11 +268,6 @@ Wire Wire Line
 	3200 4150 3200 4250
 Wire Wire Line
 	3200 4250 2650 4250
-NoConn ~ 6200 3150
-NoConn ~ 6200 3750
-NoConn ~ 6200 4050
-NoConn ~ 6200 4150
-NoConn ~ 6200 4250
 NoConn ~ 6200 4750
 NoConn ~ 6200 4850
 NoConn ~ 3600 3550
@@ -502,4 +497,31 @@ F 3 "" H 3000 2700 50  0001 C CNN
 	1    3000 2700
 	1    0    0    -1  
 $EndComp
+$Comp
+L Conn_01x10 J?
+U 1 1 5ECEE49A
+P 7800 2500
+F 0 "J?" H 7800 3000 50  0000 C CNN
+F 1 "Conn_01x10" H 7800 1900 50  0000 C CNN
+F 2 "" H 7800 2500 50  0001 C CNN
+F 3 "" H 7800 2500 50  0001 C CNN
+	1    7800 2500
+	1    0    0    -1  
+$EndComp
+Text GLabel 6200 3150 2    60   Output ~ 0
+D2
+Text GLabel 6200 3750 2    60   Output ~ 0
+D8
+Text GLabel 6200 4050 2    60   Output ~ 0
+D11
+Text GLabel 6200 4150 2    60   Output ~ 0
+D12
+Text GLabel 6200 4250 2    60   Output ~ 0
+D13
+Text GLabel 3600 3550 0    60   Output ~ 0
+A6
+Text GLabel 3600 3650 0    60   Output ~ 0
+A6
+Text GLabel 3600 3950 0    60   Input ~ 0
+A3
 $EndSCHEMATC

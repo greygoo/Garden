@@ -1,14 +1,11 @@
 import time
-#import threading
+from datetime import datetime
 
 def getData(ser):
     ser.write(b'cD\r\n')
-    time.sleep(0.5)
-    while ser.in_waiting > 0:
-        serial_line = ser.readline().decode().rstrip('\r\n').split(",");
-        print(serial_line)
+    while True:
+        serial_line = ser.readline().decode().rstrip('\r\n').split(",")
         if serial_line[0] == 'data':
-            #serial_line.pop(0)
             serial_line[0] = str(int(time.time()))
             return serial_line
 
@@ -64,14 +61,14 @@ def fanSpeed(ser, speed):
 
 def writeSensorData(ser, sensorlog):
     sensor_data = getData(ser)
-    # sensor_data: [time, Temp_Air, Humidity, Temp_Water, '0.00', '0.00']
-    print('debug: ')
+    # sensor_data: [time, Temp_Air, Humidity, Temp_Water, PH, TDS]
+    print('debug: sensor_data: ')
     print(sensor_data)
-    print('Time             : ')
-    print(sensor_data[0])
+    print('Time             : %s' % datetime.utcfromtimestamp(int(sensor_data[0])).strftime('%Y-%m-%d %H:%M:%S'))
     print('Temperature Air  : %f' % float(sensor_data[1]))
     print('Temperature Water: %f' % float(sensor_data[3]))
     print('Humidity         : %f' % float(sensor_data[2]))
+    print('TDS(ppm)         : %f' % float(sensor_data[5]))
     # check if water temperature read failed
     if float(sensor_data[3]) < 0:
         sensor_data[3] = '0'

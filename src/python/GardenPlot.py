@@ -9,7 +9,7 @@ import os
 import time
 import pandas as pd
 
-sensorlog_file = '/home/pi/sensorlog.csv'
+sensorlog_file = '/tmp/sensorlog.csv'
 
 
 def plot_layout():
