@@ -3,10 +3,11 @@
 BOARD_TAG   = pro
 BOARD_SUB   = 16MHzatmega328
 
-PWD = $(shell pwd)
+ARDUINO_LIBS = DHT-sensor-library Arduino-Temperature-Control-Library Adafruit_Sensor OneWire rc-switch TimerOne SPI Wire EEPROM GravityTDS 
 
+PWD = $(shell pwd)
 USER_LIB_PATH = $(PWD)/lib
-ARDUINO_LIBS = DHT-sensor-library Arduino-Temperature-Control-Library Adafruit_Sensor OneWire rc-switch TimerOne SPI Wire
+
 
 include ./Arduino-Makefile/Arduino.mk
 

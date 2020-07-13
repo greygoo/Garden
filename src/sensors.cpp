@@ -1,8 +1,13 @@
 #include "sensors.h"
 
+
 DHT_Unified dht[DHT_NUM] = {DHT_Unified(DHT_PIN1, DHT_TYPE), DHT_Unified(DHT_PIN1, DHT_TYPE)};
 OneWire oneWire(DS18B20PIN);
 DallasTemperature sensors(&oneWire);
+
+GravityTDS gravityTds;
+
+float tdsValue = 0,temperature = 25;
 
 
 sensorValues readSensors() {
@@ -10,16 +15,27 @@ sensorValues readSensors() {
   current.tempWater = getTempWater();
   current.tempAir1  = getTempAir(1);
   //current.tempAir2  = getTempAir(2);
-  current.humAir1  = getHumAir(1);
+  current.humAir1   = getHumAir(1);
   //current.humAir2  = getHumAir(2);
   current.pH        = getPH();
-  current.ecc       = getEcc();
+  current.tds 	    = getTDS();
   return current;
 }
 
 
 void sensorsInit(){
+  //init oneWire for Water Temperature	
   sensors.begin();
+  //init dht
+
+  //init TDS 
+  pinMode(TDS_PIN,INPUT);
+  gravityTds.setPin(TDS_PIN);
+  gravityTds.setAref(VREF);  //reference voltage on ADC, default 5.0V on Arduino UNO
+  gravityTds.setAdcRange(1024);  //1024 for 10bit ADC;4096 for 12bit ADC
+  gravityTds.begin();
+
+   //init dht
   dht[0].begin();
   dht[1].begin();
 
@@ -35,8 +51,17 @@ void sensorsInit(){
 }
 
 
+float getTDS() {
+    temperature = getTempWater();
+    gravityTds.setTemperature(temperature);  // execute temperature compensation
+    gravityTds.update();  //sample and calculate 
+    tdsValue = gravityTds.getTdsValue();  // then get the value
+    return tdsValue;
+}
+
+
 float getTempWater() {
-  float temp = -1;
+  float temp = 25;
 
   sensors.requestTemperatures();
   temp = sensors.getTempCByIndex(0);
@@ -97,12 +122,6 @@ float getPH() {
 }
 
 
-float getEcc() {
-  float ecc = 0;
-  return ecc;
-}
-
-
 void printValuesSerial(sensorValues values) {
   Serial.println("output,-----------");
   Serial.print("output,tempAir1:  ");
@@ -117,8 +136,8 @@ void printValuesSerial(sensorValues values) {
   Serial.println(values.tempWater);
   Serial.print("output,pH:        ");
   Serial.println(values.pH);
-  Serial.print("output,ecc:       ");
-  Serial.println(values.ecc);
+  Serial.print("output,tds:       ");
+  Serial.println(values.tds);
   Serial.println("output,-----------");
 }
 
@@ -133,7 +152,7 @@ void printSimpleSerial(sensorValues values) {
   Serial.print(",");
   Serial.print(values.pH);
   Serial.print(",");
-  Serial.println(values.ecc);
+  Serial.println(values.tds);
 }
 
 

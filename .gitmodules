@@ -31,3 +31,6 @@
 [submodule "kicad/arduino-kicad-library"]
 	path = kicad/arduino-kicad-library
 	url = git@github.com:Alarm-Siren/arduino-kicad-library.git
+[submodule "src/lib/GravityTDS"]
+	path = src/lib/GravityTDS
+	url = https://github.com/DFRobot/GravityTDS.git
