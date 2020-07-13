@@ -1,8 +1,6 @@
 #include "sensors.h"
 
-DHT_Unified dht1(DHT_PIN1, DHT_TYPE);
-DHT_Unified dht2(DHT_PIN2, DHT_TYPE);
-
+DHT_Unified dht[DHT_NUM] = {DHT_Unified(DHT_PIN1, DHT_TYPE), DHT_Unified(DHT_PIN1, DHT_TYPE)};
 OneWire oneWire(DS18B20PIN);
 DallasTemperature sensors(&oneWire);
 
@@ -22,17 +20,18 @@ sensorValues readSensors() {
 
 void sensorsInit(){
   sensors.begin();
-  dht1.begin();
-  dht2.begin();
+  dht[0].begin();
+  dht[1].begin();
 
   //Water temperature sensor
   sensor_t sensor;
 
-  dht1.temperature().getSensor(&sensor);
-  Serial.print  ("debug,Unique ID:    "); Serial.println(sensor.sensor_id);
+  //Humidity sensors
+  dht[0].temperature().getSensor(&sensor);
+  D_PRINTLN((String)"D: Unique ID: "+(String)sensor.sensor_id);
 
-  dht1.temperature().getSensor(&sensor);
-  Serial.print  ("deubg,Unique ID:    "); Serial.println(sensor.sensor_id); 
+  dht[1].temperature().getSensor(&sensor);
+  D_PRINTLN((String)"D: Unique ID: "+(String)sensor.sensor_id);
 }
 
 
@@ -49,22 +48,17 @@ float getTempWater() {
 float getTempAir(int sensor) {
   float temp = -1;
   
-  sensors_event_t event;
-  
-  switch(sensor) {
-    case 1 :
-      dht1.temperature().getEvent(&event);
-      break;
-    case 2 :
-      dht2.temperature().getEvent(&event);
-      break;
-    default :
-      Serial.print("debug,Sensor does not exist: ");
-      Serial.println(sensor);
+  if(sensor >= DHT_NUM) {
+    D_PRINTLN((String)"D: Sensor does not exist: "+(String)sensor);
+    return temp;
   }
+
+  sensors_event_t event;
+
+  dht[sensor].temperature().getEvent(&event);
   
   if (isnan(event.temperature)) {
-    Serial.println("debug,Error reading temperature!");
+    D_PRINTLN((String)"D: Error reading temperature!");
   }
   else {
     temp = event.temperature;
@@ -77,22 +71,17 @@ float getTempAir(int sensor) {
 float getHumAir(int sensor) {
   float hum = -1;
 
+  if(sensor >= DHT_NUM) {
+    D_PRINTLN((String)"D: Sensor does not exist: "+(String)sensor);
+    return hum;
+  }
+
   sensors_event_t event;
   
-  switch(sensor) {
-    case 1 :
-      dht1.humidity().getEvent(&event);
-      break;
-    case 2 :
-      dht2.humidity().getEvent(&event);
-      break;
-    default :
-      Serial.print("debug,Sensor does not exist: ");
-      Serial.println(sensor);
-  }
+  dht[sensor].humidity().getEvent(&event);
   
   if (isnan(event.relative_humidity)) {
-    Serial.println("debug,Error reading humidity!");
+    D_PRINTLN((String)"D: Error reading humidity!");
   }
   else {
     hum = event.relative_humidity;

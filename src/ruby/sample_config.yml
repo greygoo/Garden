@@ -1,0 +1,6 @@
+pump0_on:  '2s'
+pump0_interval: '4s'
+pump1_on:  '1s'
+pump1_interval: '2s'
+light_on:  '07 01 * * * +0200'
+light_off:  '08 01 * * * +0200'

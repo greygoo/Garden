@@ -8,8 +8,6 @@ void fanInit(){
   pinMode(FAN1_PIN, OUTPUT);
   
   setFanSpeed(FAN0_PWM_PIN, INITIAL_FAN_CYCLE); // set fan0 to initial speed
-  //fanOff(0); //turn off fan 0
-  //fanOff(1); //turn off fan 0
 }
 
 
@@ -24,40 +22,16 @@ void ctrlFan(int fan, bool state) {
     break;
 
     default:
-      Serial.print("debug,Error unknown fan: ");
-      Serial.println(fan);
+      D_PRINTLN((String)"D: unknown fan: "+(String)fan);
       return;
     break;
   }
 
-  Serial.print("debug,Fan ");
-  Serial.print(fan);
-  Serial.print(" set to: ");
-  Serial.println(state);
+  D_PRINTLN((String)"D: Fan "+(String)fan+(String)" set to: "+(String)state);
 }
-
-
-void fanOn(int fan) {
-  ctrlFan(fan, 0);
-  
-  Serial.print("debug,turn on fan ");
-  Serial.println(fan);
-}
-
-
-void fanOff(int fan) {
-  ctrlFan(fan, 1);
-  
-  Serial.print("debug,turn off fan ");
-  Serial.println(fan);
-}
-
 
 void setFanSpeed(int fan_pwm_pin, float dutyCycle){
   Timer1.pwm(fan_pwm_pin, (dutyCycle / 100) * 1023);
 
-  Serial.print("debug,Fan pwm cycle set to ");
-  Serial.print(dutyCycle);
-  Serial.print(" on pin ");
-  Serial.println(fan_pwm_pin);
+  D_PRINTLN((String)"D: Fan pwm cycle set to "+(String)dutyCycle+(String)" on pin "+(String)fan_pwm_pin);
 }

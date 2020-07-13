@@ -4,8 +4,6 @@
 
 void fanInit();
 
-void fanOn(int fan_pin);
-
-void fanOff(int fan_pin);
+void ctrlFan(int fan, bool state);
 
 void setFanSpeed(int fan_pwm_pin, float dutyCycle);
