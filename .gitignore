@@ -12,3 +12,4 @@ src/ruby/.config
 src/ruby/public/jquery.js
 src/ruby/deamon
 *.orig
+kicad/Garden2/
