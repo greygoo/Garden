@@ -48,7 +48,7 @@ void handleCommand(String command) {
         int pump_num = parseInt(command_char[2]);
         ctrlWaterPump(pump_num, 1);
       }
-      break; 
+      break;
 
       case 'f':
       {
@@ -68,7 +68,7 @@ void handleCommand(String command) {
       {
         int fan_speed = parseInt(command_char[2]);
         if (fan_speed >= 0 && fan_speed <= '9') {
-          setFanSpeed(FAN0_PWM_PIN, (fan_speed * 10));
+          setFanSpeed(CFAN0_PORT, (fan_speed * 10));
         }
         else {
           D_PRINTLN((String)"D: Error fan speed: "+fan_speed);

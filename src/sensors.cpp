@@ -1,9 +1,11 @@
 #include "sensors.h"
 
 
-DHT_Unified dht[DHT_NUM] = {DHT_Unified(DHT_PIN1, DHT_TYPE), DHT_Unified(DHT_PIN1, DHT_TYPE)};
-OneWire oneWire(DS18B20PIN);
-DallasTemperature sensors(&oneWire);
+DHT_Unified dht[DHT_NUM] = {DHT_Unified(DHT0_PIN, DHT_TYPE)};
+OneWire oneWire0(TMP0_PIN);
+OneWire oneWire1(TMP1_PIN);
+DallasTemperature sensors0(&oneWire0);
+DallasTemperature sensors1(&oneWire1);
 
 GravityTDS gravityTds;
 
@@ -24,14 +26,16 @@ sensorValues readSensors() {
 
 
 void sensorsInit(){
-  //init oneWire for Water Temperature	
-  sensors.begin();
+  //init oneWire for Water Temperature
+  sensors0.begin();
+  sensors1.begin();
+
   //init dht
 
-  //init TDS 
-  pinMode(TDS_PIN,INPUT);
-  gravityTds.setPin(TDS_PIN);
-  gravityTds.setAref(VREF);  //reference voltage on ADC, default 5.0V on Arduino UNO
+  //init ECC
+  pinMode(ECC_PIN,INPUT);
+  gravityTds.setPin(ECC_PIN);
+  gravityTds.setAref(ECC_VREF);  //reference voltage on ADC, default 5.0V on Arduino UNO
   gravityTds.setAdcRange(1024);  //1024 for 10bit ADC;4096 for 12bit ADC
   gravityTds.begin();
 
@@ -54,25 +58,25 @@ void sensorsInit(){
 float getTDS() {
     temperature = getTempWater();
     gravityTds.setTemperature(temperature);  // execute temperature compensation
-    gravityTds.update();  //sample and calculate 
+    gravityTds.update();  //sample and calculate
     tdsValue = gravityTds.getTdsValue();  // then get the value
     return tdsValue;
 }
 
-
+// TODO - manage multiple sensors
 float getTempWater() {
   float temp = 25;
 
-  sensors.requestTemperatures();
-  temp = sensors.getTempCByIndex(0);
-  
+  sensors0.requestTemperatures();
+  temp = sensors0.getTempCByIndex(0);
+
   return temp;
 }
 
 
 float getTempAir(int sensor) {
   float temp = -1;
-  
+
   if(sensor >= DHT_NUM) {
     D_PRINTLN((String)"D: Sensor does not exist: "+(String)sensor);
     return temp;
@@ -81,14 +85,14 @@ float getTempAir(int sensor) {
   sensors_event_t event;
 
   dht[sensor].temperature().getEvent(&event);
-  
+
   if (isnan(event.temperature)) {
     D_PRINTLN((String)"D: Error reading temperature!");
   }
   else {
     temp = event.temperature;
   }
-  
+
   return temp;
 }
 
@@ -102,16 +106,16 @@ float getHumAir(int sensor) {
   }
 
   sensors_event_t event;
-  
+
   dht[sensor].humidity().getEvent(&event);
-  
+
   if (isnan(event.relative_humidity)) {
     D_PRINTLN((String)"D: Error reading humidity!");
   }
   else {
     hum = event.relative_humidity;
   }
-  
+
   return hum;
 }
 

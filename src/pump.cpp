@@ -2,21 +2,25 @@
 
 
 void pumpInit(){
-  pinMode(PUMP0_PIN, OUTPUT);
+  // commented out temporarily. TODO: adjust for port multiplexing
+
+  /*pinMode(PUMP0_PIN, OUTPUT);
   pinMode(PUMP1_PIN, OUTPUT);
   digitalWrite(PUMP0_PIN, HIGH);
-  digitalWrite(PUMP1_PIN, HIGH);
+  digitalWrite(PUMP1_PIN, HIGH);*/
 }
 
 
 void ctrlWaterPump(int pump, bool state){
   switch (pump) {
-    case 0:  
-      digitalWrite(PUMP0_PIN, state);
+    case 0:
+      // commented out temporarily. TODO: adjust for port multiplexing
+      //digitalWrite(PUMP0_PIN, state);
     break;
 
     case 1:
-      digitalWrite(PUMP1_PIN, state);
+      // commented out temporarily. TODO: adjust for port multiplexing
+      //digitalWrite(PUMP1_PIN, state);
     break;
 
     default:
@@ -24,6 +28,6 @@ void ctrlWaterPump(int pump, bool state){
       return;
     break;
   }
-  
+
   D_PRINTLN((String)"D: Waterpump "+pump+" set to: "+state);
 }
