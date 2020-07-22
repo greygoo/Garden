@@ -3,22 +3,24 @@
 
 void fanInit(){
   Timer1.initialize(40); // set to 25kHz (40us)
-  pinMode(FAN0_PWM_PIN, OUTPUT);
-  pinMode(FAN0_PIN, OUTPUT);
-  pinMode(FAN1_PIN, OUTPUT);
-  
-  setFanSpeed(FAN0_PWM_PIN, INITIAL_FAN_CYCLE); // set fan0 to initial speed
+  pinMode(CFAN0_PIN, OUTPUT);
+  pinMode(CFAN0_PIN, OUTPUT);
+  pinMode(CFAN0_PIN, OUTPUT);
+
+  setFanSpeed(CFAN0_PORT, CFAN0_CYCLE); // set fan0 to initial speed
 }
 
 
 void ctrlFan(int fan, bool state) {
   switch(fan) {
     case 0:
-      digitalWrite(FAN0_PIN, state);
+      // commented out temporarily. TODO: adjust for port multiplexing
+      //digitalWrite(FAN0_PIN, state);
     break;
 
     case 1:
-      digitalWrite(FAN1_PIN, state);
+      // commented out temporarily. TODO: adjust for port multiplexing
+      //digitalWrite(FAN1_PIN, state);
     break;
 
     default:

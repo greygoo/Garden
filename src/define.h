@@ -11,6 +11,7 @@
 
 // ECC config
 #define ECC_PIN       A2
+#define ECC_VREF      5
 
 // Flow sensor config
 #define FLOW_PIN      A3
