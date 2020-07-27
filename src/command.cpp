@@ -39,28 +39,16 @@ void handleCommand(String command) {
       case 'p':
       {
         int pump_num = parseInt(command_char[2]);
-        ctrlWaterPump(pump_num, 0);
-      }
-      break;
-
-      case 'P':
-      {
-        int pump_num = parseInt(command_char[2]);
-        ctrlWaterPump(pump_num, 1);
+        int state = parseInt(command_char[3]);
+        ctrlWaterPump(pump_num, state);
       }
       break;
 
       case 'f':
       {
         int fan_num = parseInt(command_char[2]);
-        ctrlSFan(fan_num, 0);
-      }
-      break;
-
-      case 'F':
-      {
-        int fan_num = parseInt(command_char[2]);
-        ctrlSFan(fan_num, 1);
+        int state = parseInt(command_char[3]);
+        ctrlSFan(fan_num, state);
       }
       break;
 
@@ -90,30 +78,6 @@ void handleCommand(String command) {
 
       default:
         D_PRINTLN((String)"D: Unkown command: "+(String)command_char[1]);
-      break;
-    }
-  }
-  if (command_char[0] == 'p') // programming
-  {
-    switch (command_char[1])
-    {
-      case 'p':
-      {
-        /*int pump_num = parseInt(command_char[2]);
-        int run_time = parseInt(command_char[3]);
-        int stop_time = parseInt(command_char[4]);*/
-      }
-      break;
-
-      case 'l':
-      {
-        /*int run_time = parseInt(command_char[2]);
-        int stop_time = parseInt(command_char[3]);*/
-      }
-      break;
-
-      default:
-        D_PRINTLN((String)"D: Unkown programming command: "+(String)command_char[1]);
       break;
     }
   }
