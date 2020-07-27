@@ -1,11 +1,11 @@
 #include "command.h"
 
-void handleSerial() {
+void handleSerial(ShiftRegister74HC595<1> sr) {
   String incomingString;
   while (Serial.available() > 0) {
     incomingString = Serial.readStringUntil('\n');
     D_PRINTLN((String)"D: Received command: "+incomingString);
-    handleCommand(incomingString);
+    handleCommand(incomingString, sr);
   }
 }
 
@@ -20,7 +20,7 @@ int parseInt(char in_char) {
 }
 
 
-void handleCommand(String command) {
+void handleCommand(String command, ShiftRegister74HC595<1> sr) {
   int command_length = command.length();
   char command_char[command_length];
   command.toCharArray(command_char, command_length);
@@ -39,14 +39,14 @@ void handleCommand(String command) {
       case 'p':
       {
         int pump_num = parseInt(command_char[2]);
-        ctrlWaterPump(pump_num, 0);
+        ctrlWaterPump(pump_num, 0, sr);
       }
       break;
 
       case 'P':
       {
         int pump_num = parseInt(command_char[2]);
-        ctrlWaterPump(pump_num, 1);
+        ctrlWaterPump(pump_num, 1, sr);
       }
       break;
 

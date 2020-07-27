@@ -1,26 +1,30 @@
 #include "pump.h"
 
 
-void pumpInit(){
+void pumpInit(ShiftRegister74HC595<1> sr){
   // commented out temporarily. TODO: adjust for port multiplexing
 
   /*pinMode(PUMP0_PIN, OUTPUT);
   pinMode(PUMP1_PIN, OUTPUT);
   digitalWrite(PUMP0_PIN, HIGH);
   digitalWrite(PUMP1_PIN, HIGH);*/
+  sr.set(PUMP0_PORT, LOW);
+  sr.set(PUMP1_PORT, LOW);
 }
 
 
-void ctrlWaterPump(int pump, bool state){
+void ctrlWaterPump(int pump, bool state, ShiftRegister74HC595<1> sr){
   switch (pump) {
     case 0:
       // commented out temporarily. TODO: adjust for port multiplexing
       //digitalWrite(PUMP0_PIN, state);
+      sr.set(PUMP0_PORT, state);
     break;
 
     case 1:
       // commented out temporarily. TODO: adjust for port multiplexing
       //digitalWrite(PUMP1_PIN, state);
+      sr.set(PUMP1_PORT, state);
     break;
 
     default:
