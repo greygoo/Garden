@@ -19,7 +19,7 @@ class SCHEDULER
 
     # merge config file values into defaults
     @scheduler_config = default_scheduler_config.merge(YAML.load_file("config.yml"))
-    puts @scheduler_config 
+    puts @scheduler_config
 
     @job = {}
 
@@ -27,14 +27,18 @@ class SCHEDULER
     # schedule default jobs
     @job["pump0"] = @scheduler.schedule_every(@scheduler_config["pump0_interval"], :discard_past => true) do
       puts "turn on pump0"
+      $i.send("pump0on")
       sleep @scheduler_config["pump0_on"].gsub("s","").to_i
       puts "turn off pump0"
+      $i.send("pump0off")
     end
 
     @job["pump1"] = @scheduler.schedule_every(@scheduler_config["pump1_interval"], :discard_past => true) do
       puts "turn on pump1"
+      $i.send("pump1on")
       sleep @scheduler_config["pump1_on"].gsub("s","").to_i
       puts "turn off pump1"
+      $i.send("pump1off")
     end
 
     @job["light"] = @scheduler.schedule_cron @scheduler_config["light_on"] do
