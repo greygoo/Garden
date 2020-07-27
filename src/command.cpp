@@ -1,11 +1,11 @@
 #include "command.h"
 
-void handleSerial(ShiftRegister74HC595<1> sr) {
+void handleSerial() {
   String incomingString;
   while (Serial.available() > 0) {
     incomingString = Serial.readStringUntil('\n');
     D_PRINTLN((String)"D: Received command: "+incomingString);
-    handleCommand(incomingString, sr);
+    handleCommand(incomingString);
   }
 }
 
@@ -20,7 +20,7 @@ int parseInt(char in_char) {
 }
 
 
-void handleCommand(String command, ShiftRegister74HC595<1> sr) {
+void handleCommand(String command) {
   int command_length = command.length();
   char command_char[command_length];
   command.toCharArray(command_char, command_length);
@@ -39,28 +39,28 @@ void handleCommand(String command, ShiftRegister74HC595<1> sr) {
       case 'p':
       {
         int pump_num = parseInt(command_char[2]);
-        ctrlWaterPump(pump_num, 0, sr);
+        ctrlWaterPump(pump_num, 0);
       }
       break;
 
       case 'P':
       {
         int pump_num = parseInt(command_char[2]);
-        ctrlWaterPump(pump_num, 1, sr);
+        ctrlWaterPump(pump_num, 1);
       }
       break;
 
       case 'f':
       {
         int fan_num = parseInt(command_char[2]);
-        ctrlSFan(fan_num, 0, sr);
+        ctrlSFan(fan_num, 0);
       }
       break;
 
       case 'F':
       {
         int fan_num = parseInt(command_char[2]);
-        ctrlSFan(fan_num, 0, sr);
+        ctrlSFan(fan_num, 1);
       }
       break;
 
@@ -99,16 +99,16 @@ void handleCommand(String command, ShiftRegister74HC595<1> sr) {
     {
       case 'p':
       {
-        int pump_num = parseInt(command_char[2]);
+        /*int pump_num = parseInt(command_char[2]);
         int run_time = parseInt(command_char[3]);
-        int stop_time = parseInt(command_char[4]);
+        int stop_time = parseInt(command_char[4]);*/
       }
       break;
 
       case 'l':
       {
-        int run_time = parseInt(command_char[2]);
-        int stop_time = parseInt(command_char[3]);
+        /*int run_time = parseInt(command_char[2]);
+        int stop_time = parseInt(command_char[3]);*/
       }
       break;
 

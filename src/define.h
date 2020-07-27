@@ -53,23 +53,23 @@
 
 // Pump config
 #define PUMP_NUM      2
-#define PUMP0_PORT    1     // port on the relais board
-#define PUMP1_PORT    2     // for pumps
+#define PUMP0_PORT    0     // port on the relais board
+#define PUMP1_PORT    1     // for pumps
 
 // Controlled fan config
 #define CFAN_NUM      1
-#define CFAN0_PORT    3     // port on the relais board
+#define CFAN0_PORT    2     // port on the relais board
 #define CFAN0_PIN     A0    // pin for pwm speed control
 #define CFAN0_CYCLE   35.0  // speed at startup
 #define CFAN0_VREF    5.0   // analog reference voltage(Volt) of the ADC
 
 // Simple fan config
 #define SFAN_NUM      2
-#define SFAN0_PORT    4
-#define SFAN1_PORT    5
+#define SFAN0_PORT    3
+#define SFAN1_PORT    4
 
 // Ambient light config
-#define LED_PORT      6
+#define LED_PORT      5
 
 
 #ifdef DEBUG
