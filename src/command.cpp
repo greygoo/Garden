@@ -53,14 +53,14 @@ void handleCommand(String command, ShiftRegister74HC595<1> sr) {
       case 'f':
       {
         int fan_num = parseInt(command_char[2]);
-        ctrlFan(fan_num, 0);
+        ctrlSFan(fan_num, 0, sr);
       }
       break;
 
       case 'F':
       {
         int fan_num = parseInt(command_char[2]);
-        ctrlFan(fan_num, 0);
+        ctrlSFan(fan_num, 0, sr);
       }
       break;
 
