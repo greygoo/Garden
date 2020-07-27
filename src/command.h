@@ -3,7 +3,8 @@
 #include "light.h"
 #include "fans.h"
 #include "sensors.h"
+#include "common.h"
 
-void handleSerial(ShiftRegister74HC595<1> sr);
+void handleSerial();
 int parseInt(char in_char);
-void handleCommand(String command, ShiftRegister74HC595<1> sr);
+void handleCommand(String command);

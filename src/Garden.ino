@@ -1,12 +1,13 @@
+#include "common.h"
 #include "fans.h"
 #include "command.h"
 #include "pump.h"
 #include "light.h"
 #include "sensors.h"
-#include <ShiftRegister74HC595.h>
+
 
 sensorValues currentValues = { 0,0,0,0,0,0,0 };
-ShiftRegister74HC595<1> sr(0, 1, 2);
+ShiftRegister74HC595<1> sr(DATA_PIN, CLOCK_PIN, LATCH_PIN);
 
 void setup() {
   Serial.begin(9600);
@@ -15,13 +16,13 @@ void setup() {
   // set all relais ports to low
   sr.setAllLow();
   fanInit();
-  pumpInit(sr);
+  pumpInit();
   lightInit();
   sensorsInit();
 
 }
 
 void loop() {
-  handleSerial(sr);
+  handleSerial();
 //  delay(1000);
 }

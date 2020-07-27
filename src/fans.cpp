@@ -1,13 +1,12 @@
 #include "fans.h"
 
-
 void fanInit(){
   Timer1.initialize(40); // set to 25kHz (40us)
   pinMode(CFAN0_PIN, OUTPUT);
   setFanSpeed(CFAN0_PIN, CFAN0_CYCLE); // set fan0 to initial speed
 }
 
-void ctrlSFan(int fan, bool state, ShiftRegister74HC595<1> sr) {
+void ctrlSFan(int fan, bool state) {
   switch(fan) {
     case 0:
       // commented out temporarily. TODO: adjust for port multiplexing
@@ -18,7 +17,7 @@ void ctrlSFan(int fan, bool state, ShiftRegister74HC595<1> sr) {
     case 1:
       // commented out temporarily. TODO: adjust for port multiplexing
       //digitalWrite(FAN1_PIN, state);
-      sr.set(SFAN0_PORT, state);
+      sr.set(SFAN1_PORT, state);
     break;
 
     default:

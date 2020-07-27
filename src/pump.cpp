@@ -1,7 +1,7 @@
 #include "pump.h"
 
 
-void pumpInit(ShiftRegister74HC595<1> sr){
+void pumpInit(){
   // commented out temporarily. TODO: adjust for port multiplexing
 
   /*pinMode(PUMP0_PIN, OUTPUT);
@@ -13,7 +13,7 @@ void pumpInit(ShiftRegister74HC595<1> sr){
 }
 
 
-void ctrlWaterPump(int pump, bool state, ShiftRegister74HC595<1> sr){
+void ctrlWaterPump(int pump, bool state){
   switch (pump) {
     case 0:
       // commented out temporarily. TODO: adjust for port multiplexing
