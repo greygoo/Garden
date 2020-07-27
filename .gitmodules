@@ -34,3 +34,6 @@
 [submodule "src/lib/GravityTDS"]
 	path = src/lib/GravityTDS
 	url = https://github.com/DFRobot/GravityTDS.git
+[submodule "src/lib/ShiftRegister74HC595"]
+	path = src/lib/ShiftRegister74HC595
+	url = https://github.com/Simsso/ShiftRegister74HC595.git
