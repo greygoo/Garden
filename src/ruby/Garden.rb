@@ -11,7 +11,7 @@ class GARDEN
 
     # init serial connection
     puts "Connecting to serial port"
-    @serial_port = SerialPort.new "/dev/ttyUSB0", 115200 
+    @serial_port = SerialPort.new "/dev/ttyUSB0", 115200
     @serial_port.read_timeout = 5000
 
     puts "Creating scheduler"
@@ -55,11 +55,11 @@ class GARDEN
     case command
     when "light0on"
       puts "Turning on Light 0 and pause auto mode"
-      @jobs.stop('light')
+      #@jobs.stop('light')
       @serial_port.puts "cL\n"
     when "light0off"
       puts "Turning off Light 0 and pause auto mode"
-      @jobs.stop('light')
+      #@jobs.stop('light')
       @serial_port.puts "cl\n"
     when "light0auto"
       puts "Switching Light 0 to automatic mode"
@@ -67,48 +67,48 @@ class GARDEN
 
     when "pump0on"
       puts "Turning on Pump 0"
-      @jobs.stop('pump0')
-      @serial_port.write "cP0\n"
+      #@jobs.stop('pump0')
+      @serial_port.write "cp01 \n"
     when "pump0off"
       puts "Turning off Pump 0"
-      @jobs.stop('pump0')
-      @serial_port.write "cp0\n"
+      #@jobs.stop('pump0')
+      @serial_port.write "cp00 \n"
     when "pump0auto"
       puts "Switching Pump 0 to automatic mode"
+      # TODO check scheduler state and switch on or off accordingly
       @jobs.start('pump0')
 
     when "pump1on"
       puts "Turning on Pump 1"
-      @jobs.stop('pump1')
-      @serial_port.write "cP1\n"
+      #@jobs.stop('pump1')
+      @serial_port.write "cp11 \n"
     when "pump1off"
       puts "Turning off Pump 1"
-      @jobs.stop('pump1')
-      @serial_port.write "cp1\n"
+      #@jobs.stop('pump1')
+      @serial_port.write "cp10 \n"
     when "pump1auto"
       puts "Switching Pump 1 to automatic mode"
       @jobs.start('pump1')
 
     when "fan0on"
       puts "Turning on Fan 0"
-      @serial_port.write "cF0\n"
+      @serial_port.write "cf01 \n"
     when "fan0off"
       puts "Turning off Fan 0"
-      @serial_port.write "cf0\n"
+      @serial_port.write "cf00 \n"
     when "fan0auto"
       puts "Switching Fan 0 to automatic mode"
       # turn on automatic
 
     when "fan1on"
       puts "Turning on Fan 1"
-      @serial_port.write "cF1\n"
+      @serial_port.write "cf11 \n"
     when "fan1off"
       puts "Turning off Fan 1"
-      @serial_port.write "cf1\n"
+      @serial_port.write "cf10 \n"
     when "fan1auto"
       puts "Switching Fan 1 to automatic mode"
       # turn on automatic
     end
   end
 end
-
