@@ -29,11 +29,11 @@ void handleCommand(String command) {
     switch (command_char[1])
     {
       case 'l':
-        lightOff();
-      break;
-
-      case 'L':
-        lightOn();
+      {
+        // we ignore light number as there only is one light for now
+        int state = parseInt(command_char[3]);
+        ctrlLight(state);
+      }
       break;
 
       case 'p':
