@@ -2,6 +2,24 @@
 
 RCSwitch powerSwitch = RCSwitch();
 
+void ctrlLight(int state){
+  switch(state)
+  {
+    case 0:
+      lightOff();
+    break;
+
+    case 1:
+      lightOn();
+    break;
+
+    default:
+      D_PRINTLN("D: Unknown state: "+state);
+      return;
+    break;
+  }
+}
+
 void lightInit() {
   powerSwitch.enableTransmit(RF_PIN);
   powerSwitch.setProtocol(1);
