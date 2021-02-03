@@ -4,12 +4,16 @@
 #include "pump.h"
 #include "light.h"
 #include "sensors.h"
+#include "dht.h"
+#include "temp.h"
+#include "tds.h"
 
 
 sensorValues currentValues = { 0,0,0,0,0,0,0 };
 ShiftRegister74HC595<1> sr(DATA_PIN, CLOCK_PIN, LATCH_PIN);
 
-void setup() {
+void setup()
+{
   Serial.begin(115200);
   while (!Serial);
 
@@ -18,11 +22,13 @@ void setup() {
   fanInit();
   pumpInit();
   lightInit();
-  sensorsInit();
-
+  tempInit();
+  dhtInit();
+  tdsInit();
 }
 
-void loop() {
+void loop()
+{
   handleSerial();
 //  delay(1000);
 }

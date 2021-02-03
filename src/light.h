@@ -1,8 +1,9 @@
 #include <Arduino.h>
 #include <RCSwitch.h>
 #include "define.h"
+#include "common.h"
 
-void ctrlLight(int state);
+void setLight(int light, int state);
 
 void lightInit();
 
