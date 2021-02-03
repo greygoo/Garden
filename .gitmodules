@@ -37,3 +37,6 @@
 [submodule "src/lib/ShiftRegister74HC595"]
 	path = src/lib/ShiftRegister74HC595
 	url = https://github.com/Simsso/ShiftRegister74HC595.git
+[submodule "src/lib/FlowMeter"]
+	path = src/lib/FlowMeter
+	url = https://github.com/sekdiy/FlowMeter
