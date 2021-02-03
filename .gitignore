@@ -5,6 +5,7 @@ kicad/Garden.kicad_pcb-bak
 kicad/_saved_Garden.sch
 src/.vscode
 src/build*
+src/*.swp
 src/python/GardenLib.pyc
 src/ruby/playground
 src/ruby/config.yml
