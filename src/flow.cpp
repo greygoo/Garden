@@ -1,12 +1,16 @@
 #include "flow.h"
 
-//FlowMeter *Meter;
-//Flow = new FlowMeter(digitalPinToInterrupt(2), UncalibratedSensor, MeterISR, RISING);
+FlowMeter *Flow;
 
 
-void flowGet()
+void FlowISR() {
+    Flow->count();
+}
+
+
+void flowInit()
 {
-  
+  Flow = new FlowMeter(digitalPinToInterrupt(2), UncalibratedSensor, FlowISR, RISING);
 }  
 
 
