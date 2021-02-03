@@ -11,7 +11,7 @@ sensorValues readSensors();
 
 void sensorsInit();
 
-float getTDS();
+//float getTDS();
 
 float getTempWater();
 

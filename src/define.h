@@ -1,5 +1,6 @@
+
 // uncomment to get debug output on serial console
-#define DEBUG
+#define DEBUG 	true
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -12,9 +13,12 @@
 // ECC config
 #define ECC_PIN       A2
 #define ECC_VREF      5
+#define ECC_TEMP      0
 
 // Flow sensor config
-#define FLOW_PIN      A3
+#define FLOW_PIN      2 
+#define FLOW_IR	      0
+#define FLOW_FACTOR   4.5
 
 
 // DS18B20 Temp sensor config
@@ -53,23 +57,28 @@
 
 // Pump config
 #define PUMP_NUM      2
-#define PUMP0_PORT    0     // port on the relais board
-#define PUMP1_PORT    1     // for pumps
+#define PUMP0_PORT    7     // port on the relais board
+#define PUMP1_PORT    6     // for pumps
 
 // Controlled fan config
 #define CFAN_NUM      1
-#define CFAN0_PORT    2     // port on the relais board
+#define CFAN0_PORT    5     // port on the relais board
 #define CFAN0_PIN     A0    // pin for pwm speed control
 #define CFAN0_CYCLE   35.0  // speed at startup
 #define CFAN0_VREF    5.0   // analog reference voltage(Volt) of the ADC
 
 // Simple fan config
 #define SFAN_NUM      2
-#define SFAN0_PORT    3
-#define SFAN1_PORT    4
+#define SFAN0_PORT    4	    // port on the relais board 
+#define SFAN1_PORT    3     // port on the relais board 
 
 // Ambient light config
-#define LED_PORT      5
+#define LED_PORT      2     // port on the relais board 
+
+// Valves
+#define VALVE_NUM     2
+#define VALVE0_PORT   1     // port on the relais board 
+#define VALVE1_PORT   0     // port on the relais board 
 
 
 #ifdef DEBUG
@@ -81,3 +90,4 @@
  #define D_PRINTDEC(x)
  #define D_PRINTLN(x)
 #endif
+

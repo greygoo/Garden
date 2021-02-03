@@ -4,4 +4,4 @@
 
 void pumpInit();
 
-void ctrlWaterPump(int pump, bool state);
+void setPump(int pump, bool state);

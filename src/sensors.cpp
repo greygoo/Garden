@@ -1,80 +1,81 @@
 #include "sensors.h"
 
 
-DHT_Unified dht[DHT_NUM] = {DHT_Unified(DHT0_PIN, DHT_TYPE)};
-OneWire oneWire0(TMP0_PIN);
-OneWire oneWire1(TMP1_PIN);
-DallasTemperature sensors0(&oneWire0);
-DallasTemperature sensors1(&oneWire1);
+//DHT_Unified dht[DHT_NUM] = {DHT_Unified(DHT0_PIN, DHT_TYPE)};
+//OneWire oneWire0(TMP0_PIN);
+//OneWire oneWire1(TMP1_PIN);
+//DallasTemperature sensors0(&oneWire0);
+//DallasTemperature sensors1(&oneWire1);
 
-GravityTDS gravityTds;
+//GravityTDS gravityTds;
 
-float tdsValue = 0,temperature = 25;
+//float tdsValue = 0,temperature = 25;
 
 
 sensorValues readSensors() {
   sensorValues current;
-  current.tempWater = getTempWater();
-  current.tempAir1  = getTempAir(1);
+  //current.tempWater = getTempWater();
+  //current.tempAir1  = getTempAir(1);
   //current.tempAir2  = getTempAir(2);
-  current.humAir1   = getHumAir(1);
+  //current.humAir1   = getHumAir(1);
   //current.humAir2  = getHumAir(2);
   current.pH        = getPH();
-  current.tds 	    = getTDS();
+  //current.tds 	    = getTDS();
   return current;
 }
 
 
-void sensorsInit(){
+//void sensorsInit(){
   //init oneWire for Water Temperature
-  sensors0.begin();
-  sensors1.begin();
+  //sensors0.begin();
+  //sensors1.begin();
 
   //init dht
 
   //init ECC
-  pinMode(ECC_PIN,INPUT);
-  gravityTds.setPin(ECC_PIN);
-  gravityTds.setAref(ECC_VREF);  //reference voltage on ADC, default 5.0V on Arduino UNO
-  gravityTds.setAdcRange(1024);  //1024 for 10bit ADC;4096 for 12bit ADC
-  gravityTds.begin();
+  //pinMode(ECC_PIN,INPUT);
+  //gravityTds.setPin(ECC_PIN);
+  //gravityTds.setAref(ECC_VREF);  //reference voltage on ADC, default 5.0V on Arduino UNO
+  //gravityTds.setAdcRange(1024);  //1024 for 10bit ADC;4096 for 12bit ADC
+  //gravityTds.begin();
 
    //init dht
-  dht[0].begin();
-  dht[1].begin();
+  //dht[0].begin();
+  //dht[1].begin();
 
   //Water temperature sensor
-  sensor_t sensor;
+  //sensor_t sensor;
 
   //Humidity sensors
-  dht[0].temperature().getSensor(&sensor);
-  D_PRINTLN((String)"D: Unique ID: "+(String)sensor.sensor_id);
+  //dht[0].temperature().getSensor(&sensor);
+  //D_PRINTLN((String)"D: Unique ID: "+(String)sensor.sensor_id);
 
-  dht[1].temperature().getSensor(&sensor);
-  D_PRINTLN((String)"D: Unique ID: "+(String)sensor.sensor_id);
-}
+  //dht[1].temperature().getSensor(&sensor);
+  //D_PRINTLN((String)"D: Unique ID: "+(String)sensor.sensor_id);
+//}
 
 
-float getTDS() {
-    temperature = getTempWater();
-    gravityTds.setTemperature(temperature);  // execute temperature compensation
-    gravityTds.update();  //sample and calculate
-    tdsValue = gravityTds.getTdsValue();  // then get the value
-    return tdsValue;
-}
+//float getTDS() {
+    // disabled as split into temp.cpp
+    //temperature = getTempWater();
+    //gravityTds.setTemperature(temperature);  // execute temperature compensation
+    //gravityTds.update();  //sample and calculate
+    //tdsValue = gravityTds.getTdsValue();  // then get the value
+    //return tdsValue;
+//}
 
 // TODO - manage multiple sensors
-float getTempWater() {
+/*float getTempWater() {
   float temp = 25;
 
   sensors0.requestTemperatures();
   temp = sensors0.getTempCByIndex(0);
 
   return temp;
-}
+}*/
 
 
-float getTempAir(int sensor) {
+/*float getTempAir(int sensor) {
   float temp = -1;
 
   if(sensor >= DHT_NUM) {
@@ -94,10 +95,10 @@ float getTempAir(int sensor) {
   }
 
   return temp;
-}
+}*/
 
 
-float getHumAir(int sensor) {
+/*float getHumAir(int sensor) {
   float hum = -1;
 
   if(sensor >= DHT_NUM) {
@@ -117,7 +118,7 @@ float getHumAir(int sensor) {
   }
 
   return hum;
-}
+}*/
 
 
 float getPH() {

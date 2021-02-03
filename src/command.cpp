@@ -1,8 +1,10 @@
 #include "command.h"
 
-void handleSerial() {
+void handleSerial()
+{
   String incomingString;
-  while (Serial.available() > 0) {
+  while (Serial.available() > 0)
+  {
     incomingString = Serial.readStringUntil('\n');
     D_PRINTLN((String)"D: Received command: "+incomingString);
     handleCommand(incomingString);
@@ -10,18 +12,22 @@ void handleSerial() {
 }
 
 
-int parseInt(char in_char) {
-  if (isDigit(in_char)) {
+int parseInt(char in_char)
+{
+  if (isDigit(in_char))
+  {
     return (int(in_char) - 48);
   }
-  else {
+  else
+  {
     return -1;
   }
 }
 
 
-void handleCommand(String command) {
-  int command_length = command.length();
+void handleCommand(String command)
+{
+  int command_length = command.length()+1;
   char command_char[command_length];
   command.toCharArray(command_char, command_length);
   if (command_char[0] == 'c')
@@ -30,9 +36,9 @@ void handleCommand(String command) {
     {
       case 'l':
       {
-        // we ignore light number as there only is one light for now
+        int light_num = parseInt(command_char[2]);
         int state = parseInt(command_char[3]);
-        ctrlLight(state);
+        setLight(light_num, state);
       }
       break;
 
@@ -40,7 +46,7 @@ void handleCommand(String command) {
       {
         int pump_num = parseInt(command_char[2]);
         int state = parseInt(command_char[3]);
-        ctrlWaterPump(pump_num, state);
+        setPump(pump_num, state);
       }
       break;
 
@@ -48,7 +54,7 @@ void handleCommand(String command) {
       {
         int fan_num = parseInt(command_char[2]);
         int state = parseInt(command_char[3]);
-        ctrlSFan(fan_num, state);
+        setFan(fan_num, state);
       }
       break;
 
@@ -79,6 +85,34 @@ void handleCommand(String command) {
       default:
         D_PRINTLN((String)"D: Unkown command: "+(String)command_char[1]);
       break;
+    }
+  }
+  if (command_char[0] == 's')
+  {
+    switch (command_char[1])
+    {
+      case 't':
+      {
+        int sensor_num = parseInt(command_char[2]);
+        printTemp(sensor_num);
+      }
+      break;
+
+      case 'h':
+      {
+        printHumDHT();
+      }
+      break;
+
+      case 'e':
+      {
+        printTDS();
+      }
+      break;
+
+      default:
+        D_PRINTLN((String)"D: Unkown command: "+(String)command_char[1]);
+      break; 
     }
   }
 }
