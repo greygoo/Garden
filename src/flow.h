@@ -1,7 +1,10 @@
 #include <FlowMeter.h>
 #include "define.h"
 
-void flowGet();
+void FlowISR();
 
+void flowInit();
 
+double getFlow();
 
+double getVolume();

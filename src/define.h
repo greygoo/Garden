@@ -17,8 +17,8 @@
 
 // Flow sensor config
 #define FLOW_PIN      2 
-#define FLOW_IR	      0
-#define FLOW_FACTOR   4.5
+#define FLOW_INT      0
+#define FLOW_PERIOD   1000 
 
 
 // DS18B20 Temp sensor config
