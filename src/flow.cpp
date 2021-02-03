@@ -3,7 +3,8 @@
 FlowMeter *Flow;
 
 
-void FlowISR() {
+void FlowISR()
+{
     Flow->count();
 }
 
@@ -14,4 +15,15 @@ void flowInit()
 }  
 
 
+double getFlow()
+{
+  Flow->tick(FLOW_PERIOD);
+  return(Flow->getCurrentFlowrate());
+}
+
+
+double getVolume()
+{
+  return(Flow->getTotalVolume());
+}
 

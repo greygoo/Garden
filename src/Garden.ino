@@ -7,6 +7,7 @@
 #include "dht.h"
 #include "temp.h"
 #include "tds.h"
+#include "flow.h"
 
 
 sensorValues currentValues = { 0,0,0,0,0,0,0 };
@@ -25,6 +26,7 @@ void setup()
   tempInit();
   dhtInit();
   tdsInit();
+  flowInit();
 }
 
 void loop()
