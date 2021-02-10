@@ -19,7 +19,9 @@ void setup()
   while (!Serial);
 
   // set all relais ports to low
-  sr.setAllLow();
+  sr.setAllHigh();
+  //sr.set(VALVE0_PORT, HIGH);
+  //sr.set(VALVE1_PORT, HIGH);
   fanInit();
   pumpInit();
   lightInit();

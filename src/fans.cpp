@@ -12,15 +12,15 @@ void setFan(int fan, bool state)
   switch(fan)
   {
     case 0:
-      sr.set(CFAN0_PORT, state);
+      sr.set(CFAN0_PORT, !state);
     break;
 
     case 1:
-      sr.set(SFAN0_PORT, state);
+      sr.set(SFAN0_PORT, !state);
     break;
 
     case 2:
-      sr.set(SFAN1_PORT, state);
+      sr.set(SFAN1_PORT, !state);
     break;
 
     default:

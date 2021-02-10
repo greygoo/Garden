@@ -17,16 +17,16 @@ void tempInit()
 
 float getTemp(int sensor)
 {
-  float temp = 99;
+  float temp = -1;
   
   switch (sensor)
   {
-    case 1:
+    case 0:
       temp0.requestTemperatures();
       temp = temp0.getTempCByIndex(0);
     break;
 
-    case 2:
+    case 1:
       temp1.requestTemperatures();
       temp = temp1.getTempCByIndex(0);
     break;
