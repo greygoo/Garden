@@ -5,6 +5,6 @@ void FlowISR();
 
 void flowInit();
 
-double getFlow();
+double getFlow(unsigned long period);
 
 double getVolume();

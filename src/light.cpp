@@ -11,21 +11,24 @@ void setLight(int light, int state)
       {
         case 0:
           lightOff();
+          D_PRINTLN((String)"D: Light 1 set to: "+state);
         break;
 
         case 1:
           lightOn();
+          D_PRINTLN((String)"D: Light 1 set to: "+state);
         break;
 
         default:
-          D_PRINTLN("D: Unknown state: "+state);
+          D_PRINTLN((String)"D: Unknown state: "+state);
           return;
         break;
       }
     break;
 
     case 1:
-      sr.set(LED_PORT, state);
+      sr.set(LED_PORT, !state);
+      D_PRINTLN((String)"D: Light 2 set to: "+state);
     break;
 
     default:
@@ -44,11 +47,9 @@ void lightInit()
 void lightOff()
 {
   powerSwitch.sendTriState("00000F000FF0");
-  D_PRINTLN("D: Switching light off.");
 }
 
 void lightOn()
 {
   powerSwitch.sendTriState("00000F000FFF");
-  D_PRINTLN("D: Switching light on.");
 }

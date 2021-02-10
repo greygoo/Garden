@@ -5,7 +5,7 @@ void handleSerial()
   String incomingString;
   while (Serial.available() > 0)
   {
-    incomingString = Serial.readStringUntil('\n');
+    incomingString = Serial.readStringUntil('\r');
     D_PRINTLN((String)"D: Received command: "+incomingString);
     handleCommand(incomingString);
   }
@@ -36,25 +36,19 @@ void handleCommand(String command)
     {
       case 'l':
       {
-        int light_num = parseInt(command_char[2]);
-        int state = parseInt(command_char[3]);
-        setLight(light_num, state);
+        setLight(parseInt(command_char[2]), parseInt(command_char[3]));
       }
       break;
 
       case 'p':
       {
-        int pump_num = parseInt(command_char[2]);
-        int state = parseInt(command_char[3]);
-        setPump(pump_num, state);
+        setPump(parseInt(command_char[2]), parseInt(command_char[3]));
       }
       break;
 
       case 'f':
       {
-        int fan_num = parseInt(command_char[2]);
-        int state = parseInt(command_char[3]);
-        setFan(fan_num, state);
+        setFan(parseInt(command_char[2]), parseInt(command_char[3]));
       }
       break;
 
@@ -106,7 +100,13 @@ void handleCommand(String command)
 
       case 'e':
       {
-        printTDS();
+        getTDS();
+      }
+      break;
+
+      case 'c':
+      {
+        calibrateTDS();
       }
       break;
 

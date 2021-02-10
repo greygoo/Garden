@@ -15,9 +15,9 @@ void flowInit()
 }  
 
 
-double getFlow()
+double getFlow(unsigned long period)
 {
-  Flow->tick(FLOW_PERIOD);
+  Flow->tick(period);
   return(Flow->getCurrentFlowrate());
 }
 

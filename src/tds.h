@@ -7,4 +7,6 @@ void tdsInit();
 
 float getTDS(); 
 
+void calibrateTDS();
+
 void printTDS();
