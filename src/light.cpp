@@ -2,7 +2,14 @@
 
 RCSwitch powerSwitch = RCSwitch();
 
-void setLight(int light, int state)
+Light::Light()
+{
+  powerSwitch.enableTransmit(RF_PIN);
+  powerSwitch.setProtocol(1);
+}
+
+
+void Light::setLight(int light, int state)
 {
   switch (light)
   {
@@ -38,18 +45,13 @@ void setLight(int light, int state)
   }
 }
 
-void lightInit()
-{
-  powerSwitch.enableTransmit(RF_PIN);
-  powerSwitch.setProtocol(1);
-}
 
-void lightOff()
+void Light::lightOff()
 {
   powerSwitch.sendTriState("00000F000FF0");
 }
 
-void lightOn()
+void Light::lightOn()
 {
   powerSwitch.sendTriState("00000F000FFF");
 }

@@ -1,17 +1,14 @@
 #include "pump.h"
 
-unsigned long PumpStart;
-unsigned long PumpStop;
-unsigned long PumpTime;
 
-void pumpInit()
+Pump::Pump()
 {
   sr.set(PUMP0_PORT, HIGH);
   sr.set(PUMP1_PORT, HIGH);
 }
 
 
-void setPump(int pump, bool state)
+void Pump::setPump(int pump, bool state)
 {
   if (state == 1) 
   {
@@ -36,14 +33,30 @@ void setPump(int pump, bool state)
 
   if (state == 0)
   {
-    PumpStop = millis();
-    PumpTime = PumpStop - PumpStart;
-    double flowRate = getFlow(PumpTime);
-    double totalVolume = getVolume();
+    this->PumpStop = millis();
+    this->PumpTime = this->PumpStop - this->PumpStart;
+    this->flowRate = getFlow(this->PumpTime);
+    this->totalVolume = getVolume();
     D_PRINTLN((String)"Flow rate: "+flowRate+" l/min");
     D_PRINTLN((String)"D: Pump time: "+PumpTime); 
   }
 
 
   D_PRINTLN((String)"D: Waterpump "+pump+" set to: "+state);
+}
+
+
+void Pump::getFlowRate()
+{
+  Serial.print("Flow rate: ");
+  Serial.print(this->flowRate);
+  Serial.println(" l/min");
+}
+
+
+void Pump::getTotalVolume()
+{
+  Serial.print("Total Volume: ");
+  Serial.print(this->totalVolume);
+  Serial.println(" l");
 }

@@ -1,6 +1,7 @@
 #include <GravityTDS.h>
 #include "define.h"
-#include "temp.h"
+#include "common.h"
+//#include "temp.h"
 
 
 void tdsInit();

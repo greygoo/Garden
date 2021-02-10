@@ -3,6 +3,17 @@
 #include "flow.h"
 #include "common.h"
 
-void pumpInit();
-
-void setPump(int pump, bool state);
+class Pump
+{
+  public:
+    Pump();
+    void setPump(int pump, bool state);
+    void getFlowRate();
+    void getTotalVolume();
+  private:
+    unsigned long PumpStart;
+    unsigned long PumpStop;
+    unsigned long PumpTime;
+    double flowRate;
+    double totalVolume;
+};

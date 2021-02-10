@@ -3,7 +3,7 @@
 #include "light.h"
 #include "fans.h"
 #include "sensors.h"
-#include "temp.h"
+//#include "temp.h"
 #include "dht.h"
 #include "tds.h"
 #include "common.h"

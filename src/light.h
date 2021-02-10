@@ -3,10 +3,13 @@
 #include "define.h"
 #include "common.h"
 
-void setLight(int light, int state);
 
-void lightInit();
-
-void lightOn();
-
-void lightOff();
+class Light
+{
+  public:
+    Light();
+    void setLight(int light, int state);
+  private:
+    void lightOn();
+    void lightOff();
+};

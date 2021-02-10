@@ -1,17 +1,15 @@
 #include "common.h"
-#include "fans.h"
-#include "command.h"
-#include "pump.h"
-#include "light.h"
 #include "sensors.h"
 #include "dht.h"
-#include "temp.h"
 #include "tds.h"
 #include "flow.h"
+#include "command.h"
 
 
 sensorValues currentValues = { 0,0,0,0,0,0,0 };
 ShiftRegister74HC595<1> sr(DATA_PIN, CLOCK_PIN, LATCH_PIN);
+Temp temp;
+
 
 void setup()
 {
@@ -22,10 +20,6 @@ void setup()
   sr.setAllHigh();
   //sr.set(VALVE0_PORT, HIGH);
   //sr.set(VALVE1_PORT, HIGH);
-  fanInit();
-  pumpInit();
-  lightInit();
-  tempInit();
   dhtInit();
   tdsInit();
   flowInit();
@@ -34,5 +28,5 @@ void setup()
 void loop()
 {
   handleSerial();
-//  delay(1000);
+  //delay(1000);
 }
