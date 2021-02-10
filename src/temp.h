@@ -2,9 +2,16 @@
 #include <DallasTemperature.h>
 #include "define.h"
 
+#ifndef MY_TEMP_H
+#define MY_TEMP_H
 
-void tempInit();
+class Temp
+{
+  public:
+    Temp();
+    void printTemp(int sensor);
+    float getTemp(int sensor);
+  private:
+};
 
-float getTemp(int sensor);
-
-void printTemp(int sensor);
+#endif

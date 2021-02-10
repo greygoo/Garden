@@ -8,14 +8,14 @@ OneWire oneWire1(TMP1_PIN);
 DallasTemperature temp1(&oneWire1);
 
 
-void tempInit()
+Temp::Temp()
 {
   temp0.begin();
   temp1.begin();
 }
 
 
-float getTemp(int sensor)
+float Temp::getTemp(int sensor)
 {
   float temp = -1;
   
@@ -41,7 +41,7 @@ float getTemp(int sensor)
 }
 
 
-void printTemp(int sensor)
+void Temp::printTemp(int sensor)
 {
   float temp = getTemp(sensor);
   Serial.print(temp);

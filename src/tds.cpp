@@ -16,7 +16,7 @@ void tdsInit()
 
 
 float getTDS() {
-    temperature = getTemp(ECC_TEMP);
+    temperature = temp.getTemp(ECC_TEMP);
     gravityTds.setTemperature(temperature);  // execute temperature compensation
     gravityTds.update();  //sample and calculate
     tdsValue = gravityTds.getTdsValue();  // then get the value
@@ -31,7 +31,7 @@ float getTDS() {
 
 
 void calibrateTDS() {
-    temperature = getTemp(ECC_TEMP);
+    temperature = temp.getTemp(ECC_TEMP);
     gravityTds.setTemperature(temperature);  // execute temperature compensation
     gravityTds.update();  //sample and calculate
     gravityTds.ecCalibration(1);

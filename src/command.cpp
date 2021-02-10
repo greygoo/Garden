@@ -1,5 +1,10 @@
 #include "command.h"
 
+Pump pump;
+Fan fan;
+Light light;
+
+
 void handleSerial()
 {
   String incomingString;
@@ -36,19 +41,19 @@ void handleCommand(String command)
     {
       case 'l':
       {
-        setLight(parseInt(command_char[2]), parseInt(command_char[3]));
+        light.setLight(parseInt(command_char[2]), parseInt(command_char[3]));
       }
       break;
 
       case 'p':
       {
-        setPump(parseInt(command_char[2]), parseInt(command_char[3]));
+        pump.setPump(parseInt(command_char[2]), parseInt(command_char[3]));
       }
       break;
 
       case 'f':
       {
-        setFan(parseInt(command_char[2]), parseInt(command_char[3]));
+        fan.setFan(parseInt(command_char[2]), parseInt(command_char[3]));
       }
       break;
 
@@ -56,7 +61,7 @@ void handleCommand(String command)
       {
         int fan_speed = parseInt(command_char[2]);
         if (fan_speed >= 0 && fan_speed <= '9') {
-          setFanSpeed(CFAN0_PORT, (fan_speed * 10));
+          fan.setFanSpeed(CFAN0_PORT, (fan_speed * 10));
         }
         else {
           D_PRINTLN((String)"D: Error fan speed: "+fan_speed);
@@ -88,7 +93,7 @@ void handleCommand(String command)
       case 't':
       {
         int sensor_num = parseInt(command_char[2]);
-        printTemp(sensor_num);
+        temp.printTemp(sensor_num);
       }
       break;
 
@@ -107,6 +112,18 @@ void handleCommand(String command)
       case 'c':
       {
         calibrateTDS();
+      }
+      break;
+
+      case 'v':
+      {
+        pump.getTotalVolume();
+      }
+      break;
+
+      case 'f':
+      {
+        pump.getFlowRate();
       }
       break;
 

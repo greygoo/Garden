@@ -1,13 +1,14 @@
 #include "fans.h"
 
-void fanInit()
+
+Fan::Fan()
 {
   Timer1.initialize(40); // set to 25kHz (40us)
   pinMode(CFAN0_PIN, OUTPUT);
   setFanSpeed(CFAN0_PIN, CFAN0_CYCLE); // set fan0 to initial speed
 }
 
-void setFan(int fan, bool state)
+void Fan::setFan(int fan, bool state)
 {
   switch(fan)
   {
@@ -32,7 +33,7 @@ void setFan(int fan, bool state)
   D_PRINTLN((String)"D: SFan "+(String)fan+(String)" set to: "+(String)state);
 }
 
-void setFanSpeed(int fan_pwm_pin, float dutyCycle)
+void Fan::setFanSpeed(int fan_pwm_pin, float dutyCycle)
 {
   Timer1.pwm(fan_pwm_pin, (dutyCycle / 100) * 1023);
 
