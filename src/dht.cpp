@@ -2,13 +2,13 @@
 
 DHT dht = DHT(DHT0_PIN,DHT_TYPE);
 
-void dhtInit()
+Humidity::Humidity()
 {
   dht.begin();
 }
 
 
-float getTempDHT()
+float Humidity::getTempDHT()
 {
   float temp = -1;
 
@@ -26,7 +26,7 @@ float getTempDHT()
 }
 
 
-float getHumDHT()
+float Humidity::getHumDHT()
 {
   float humidity = -1;
 
@@ -44,15 +44,15 @@ float getHumDHT()
 }
 
 
-void printTempDHT()
+void Humidity::printTempDHT()
 {
-  float temp = getTempDHT();
+  float temp = this->getTempDHT();
   Serial.print(temp);
 }
 
 
-void printHumDHT()
+void Humidity::printHumDHT()
 {
-  float humidity = getHumDHT();
+  float humidity = this->getHumDHT();
   Serial.print(humidity);
 }

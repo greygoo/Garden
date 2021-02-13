@@ -1,8 +1,6 @@
 #include "common.h"
 #include "sensors.h"
-#include "dht.h"
 #include "tds.h"
-#include "flow.h"
 #include "command.h"
 
 
@@ -16,13 +14,11 @@ void setup()
   Serial.begin(115200);
   while (!Serial);
 
-  // set all relais ports to low
+  // set all relais ports to high 
   sr.setAllHigh();
   //sr.set(VALVE0_PORT, HIGH);
   //sr.set(VALVE1_PORT, HIGH);
-  dhtInit();
   tdsInit();
-  flowInit();
 }
 
 void loop()

@@ -1,29 +1,28 @@
 #include "flow.h"
 
-FlowMeter *Flow;
+FlowMeter *FlowM;
 
 
-void FlowISR()
+Flow::Flow()
 {
-    Flow->count();
-}
-
-
-void flowInit()
-{
-  Flow = new FlowMeter(digitalPinToInterrupt(2), UncalibratedSensor, FlowISR, RISING);
+  FlowM = new FlowMeter(digitalPinToInterrupt(2), UncalibratedSensor, this->FlowISR, RISING);
 }  
 
 
-double getFlow(unsigned long period)
+static void Flow::FlowISR()
 {
-  Flow->tick(period);
-  return(Flow->getCurrentFlowrate());
+    FlowM->count();
 }
 
 
-double getVolume()
+double Flow::getFlow(unsigned long period)
 {
-  return(Flow->getTotalVolume());
+  FlowM->tick(period);
+  return(FlowM->getCurrentFlowrate());
 }
 
+
+double Flow::getVolume()
+{
+  return(FlowM->getTotalVolume());
+}

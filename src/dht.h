@@ -2,12 +2,13 @@
 #include "define.h"
 
 
-void dhtInit();
-
-float getTempDHT(int sensor);
-
-float getHumDHT(int sensor); 
-
-void printTempDHT();
-
-void printHumDHT();
+class Humidity
+{
+  public:
+    Humidity();
+    void printTempDHT();
+    void printHumDHT();
+  private:
+    float getTempDHT();
+    float getHumDHT(); 
+};
