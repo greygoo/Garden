@@ -3,6 +3,7 @@
 Pump pump;
 Fan fan;
 Light light;
+Humidity humidity;
 
 
 void handleSerial()
@@ -99,7 +100,13 @@ void handleCommand(String command)
 
       case 'h':
       {
-        printHumDHT();
+        humidity.printHumDHT();
+      }
+      break;
+
+      case 'd':
+      {
+        humidity.printTempDHT();
       }
       break;
 

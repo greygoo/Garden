@@ -1,6 +1,8 @@
 #include "pump.h"
 
 
+Flow flow;
+
 Pump::Pump()
 {
   sr.set(PUMP0_PORT, HIGH);
@@ -35,8 +37,8 @@ void Pump::setPump(int pump, bool state)
   {
     this->PumpStop = millis();
     this->PumpTime = this->PumpStop - this->PumpStart;
-    this->flowRate = getFlow(this->PumpTime);
-    this->totalVolume = getVolume();
+    this->flowRate = flow.getFlow(this->PumpTime);
+    this->totalVolume = flow.getVolume();
     D_PRINTLN((String)"Flow rate: "+flowRate+" l/min");
     D_PRINTLN((String)"D: Pump time: "+PumpTime); 
   }
