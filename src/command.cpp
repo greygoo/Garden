@@ -62,7 +62,7 @@ void handleCommand(String command)
       {
         int fan_speed = parseInt(command_char[2]);
         if (fan_speed >= 0 && fan_speed <= '9') {
-          fan.setFanSpeed(CFAN0_PORT, (fan_speed * 10));
+          fan.setFanSpeed(CFAN0_PIN, (fan_speed * 10));
         }
         else {
           D_PRINTLN((String)"D: Error fan speed: "+fan_speed);
