@@ -1,6 +1,6 @@
 
 // uncomment to get debug output on serial console
-#define DEBUG 	true
+#define DEBUG         true 
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -35,7 +35,7 @@
 #define FLT1_PIN      8
 
 // Door sensor config
-#define DOOR_PIN      9
+#define DOOR_PIN      14 
 
 // RF switch config for RF plugs
 # define RF_PIN       10
@@ -61,7 +61,7 @@
 // Controlled fan config
 #define CFAN_NUM      1
 #define CFAN0_PORT    5     // port on the relais board
-#define CFAN0_PIN     A0    // pin for pwm speed control
+#define CFAN0_PIN     9    // pin for pwm speed control
 #define CFAN0_CYCLE   35.0  // speed at startup
 #define CFAN0_VREF    5.0   // analog reference voltage(Volt) of the ADC
 

@@ -3,7 +3,7 @@
 
 Fan::Fan()
 {
-  Timer1.initialize(40); // set to 25kHz (40us)
+  initialized = 0;
   pinMode(CFAN0_PIN, OUTPUT);
   setFanSpeed(CFAN0_PIN, CFAN0_CYCLE); // set fan0 to initial speed
 }
@@ -35,7 +35,9 @@ void Fan::setFan(int fan, bool state)
 
 void Fan::setFanSpeed(int fan_pwm_pin, float dutyCycle)
 {
-  Timer1.pwm(fan_pwm_pin, (dutyCycle / 100) * 1023);
-
+  Timer1.initialize(40); // set to 25kHz (40us)
+  float duty = (dutyCycle / 100) * 1023;
+  D_PRINTLN((String)"D: duty: "+(String)duty);
+  Timer1.pwm(fan_pwm_pin, int(duty));
   D_PRINTLN((String)"D: CFan pwm cycle set to "+(String)dutyCycle+(String)" on pin "+(String)fan_pwm_pin);
 }

@@ -12,7 +12,7 @@ void handleSerial()
   while (Serial.available() > 0)
   {
     incomingString = Serial.readStringUntil('\r');
-    D_PRINTLN((String)"D: Received command: "+incomingString);
+    D_PRINTLN((String)"D: Received command: "+(String)incomingString);
     handleCommand(incomingString);
   }
 }
@@ -60,12 +60,13 @@ void handleCommand(String command)
 
       case 's':
       {
-        int fan_speed = parseInt(command_char[2]);
-        if (fan_speed >= 0 && fan_speed <= '9') {
-          fan.setFanSpeed(CFAN0_PIN, (fan_speed * 10));
+        int fan_speed = (parseInt(command_char[2]) * 10) + parseInt(command_char[3]);
+        D_PRINTLN((String)"D: fanSpeed: "+(String)fan_speed);
+        if (fan_speed >= 0 && fan_speed <= '99') {
+          fan.setFanSpeed(CFAN0_PIN, fan_speed);
         }
         else {
-          D_PRINTLN((String)"D: Error fan speed: "+fan_speed);
+          D_PRINTLN((String)"D: Error fan speed: "+(String)fan_speed);
         }
       }
       break;
