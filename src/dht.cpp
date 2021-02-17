@@ -47,12 +47,12 @@ float Humidity::getHumDHT()
 void Humidity::printTempDHT()
 {
   float temp = this->getTempDHT();
-  Serial.print(temp);
+  Serial.println(temp);
 }
 
 
 void Humidity::printHumDHT()
 {
   float humidity = this->getHumDHT();
-  Serial.print(humidity);
+  Serial.println(humidity);
 }
