@@ -12,7 +12,7 @@ Light::Light()
   powerSwitch.enableTransmit(RF_PIN);
   powerSwitch.setProtocol(1);
   #elif LIGHT_REMOTE
-  UnitecRCSwitch::ButtonCodes codes = {
+  codes = {
     {4200304, 4467632, 4641840, 4853312}, // Button A ON codes
     {4836384, 4450832, 4993424, 4345248}, // Button A OFF codes
     {4467636, 4200308, 4853316, 4641844}, // Button B ON codes
@@ -71,7 +71,7 @@ void Light::lightOn()
   powerSwitch.sendTriState("00000F000FFF");
   D_PRINTLN((String)"D: Sent TriState On ");
   #elif LIGHT_REMOTE
-  mySwitch.switchOn(UnitecRCSwitch::SOCKET_B);                                                                    
+  mySwitch.switchOn(UnitecRCSwitch::SOCKET_A);                                                                    
   D_PRINTLN((String)"D: Sent Unitec On ");
   #endif
 }
@@ -83,7 +83,7 @@ void Light::lightOff()
   powerSwitch.sendTriState("00000F000FF0");
   D_PRINTLN((String)"D: Sent TriState Off ");
   #elif LIGHT_REMOTE
-  mySwitch.switchOff(UnitecRCSwitch::SOCKET_B);
+  mySwitch.switchOff(UnitecRCSwitch::SOCKET_A);
   D_PRINTLN((String)"D: Sent Unitec Off ");
   #endif
 }
