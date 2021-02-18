@@ -40,3 +40,6 @@
 [submodule "src/lib/FlowMeter"]
 	path = src/lib/FlowMeter
 	url = https://github.com/sekdiy/FlowMeter
+[submodule "src/lib/UnitecRCSwitch"]
+	path = src/lib/UnitecRCSwitch
+	url = https://github.com/tnn85/UnitecRCSwitch.git
