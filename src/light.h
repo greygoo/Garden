@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <RCSwitch.h>
+#include <UnitecRCSwitch.h>
 #include "define.h"
 #include "common.h"
 
