@@ -11,6 +11,7 @@ class Light
     Light();
     void setLight(int light, int state);
   private:
+    UnitecRCSwitch::ButtonCodes codes;
     void lightOn();
     void lightOff();
 };
