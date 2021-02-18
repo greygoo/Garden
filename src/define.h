@@ -44,6 +44,11 @@
 // Lights, Pumps, Fans and other controlled devices                           //
 ////////////////////////////////////////////////////////////////////////////////
 
+// Light remote switch type:
+// 0: rc-switch
+// 1: unitecRCSwitch 
+#define LIGHT_REMOTE  1
+
 // Grow light codes for rf power plugs
 #define LIGHT_ON      00000F000FF0
 #define LIGHT_OFF     00000F000FF0
