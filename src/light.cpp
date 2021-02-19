@@ -8,6 +8,10 @@ UnitecRCSwitch mySwitch;
 
 Light::Light()
 {
+  for (int i = 0; i <= LIGHT_NUM; i++)
+  {
+    lightState[i] = 0;
+  }
   #ifndef LIGHT_REMOTE
   powerSwitch.enableTransmit(RF_PIN);
   powerSwitch.setProtocol(1);
@@ -37,11 +41,13 @@ void Light::setLight(int light, int state)
       {
         case 0:
           lightOff();
+          lightState[light] = state;
           D_PRINTLN((String)"D: Light 0 set to: 0");
         break;
 
         case 1:
           lightOn();
+          lightState[light] = state;
           D_PRINTLN((String)"D: Light 0 set to: 1");
         break;
 
@@ -54,11 +60,13 @@ void Light::setLight(int light, int state)
 
     case 1:
       sr.set(LED_PORT, !state);
+      lightState[light] = state;
       D_PRINTLN((String)"D: Light 1 set to: "+state);
     break;
 
     default:
       D_PRINTLN((String)"D: Error unknown light: "+light);
+      lightState[light] = state;
       return;
     break;
   }
@@ -86,4 +94,13 @@ void Light::lightOff()
   mySwitch.switchOff(UnitecRCSwitch::SOCKET_A);
   D_PRINTLN((String)"D: Sent Unitec Off ");
   #endif
+}
+
+
+void Light::getLightState(int light)
+{
+  Serial.print("Light ");
+  Serial.print(light);
+  Serial.print(": ");
+  Serial.println(lightState[light]);
 }

@@ -4,10 +4,10 @@
 Fan::Fan()
 {
   initialized = 0;
-  for(int i=0; i<=FAN_NUM; i++)
+  for (int i = 0; i < FAN_NUM; i++)
   {
     fanState[i] = 0;
-  } 
+  }
   pinMode(CFAN0_PIN, OUTPUT);
   setFanSpeed(CFAN0_PIN, CFAN0_CYCLE); // set fan0 to initial speed
 }

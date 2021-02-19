@@ -50,6 +50,7 @@
 #define LIGHT_REMOTE  1
 
 // Grow light codes for rf power plugs
+#define LIGHT_NUM     2
 #define LIGHT_ON      00000F000FF0
 #define LIGHT_OFF     00000F000FF0
 
