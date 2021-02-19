@@ -64,6 +64,8 @@
 #define PUMP1_PORT    6     // for pumps
 
 // Controlled fan config
+#define FAN_NUM       3
+
 #define CFAN_NUM      1
 #define CFAN0_PORT    5     // port on the relais board
 #define CFAN0_PIN     9    // pin for pwm speed control

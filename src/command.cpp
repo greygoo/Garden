@@ -141,6 +141,12 @@ void handleCommand(String command)
       }
       break;
 
+      case 'f':
+      {
+        fan.getFanState(parseInt(command_char[2]));
+      }
+      break;
+
       default:
         D_PRINTLN((String)"D: Unkown command: "+(String)command_char[1]);
       break; 
