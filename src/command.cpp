@@ -129,9 +129,15 @@ void handleCommand(String command)
       }
       break;
 
-      case 'f':
+      case 'r':
       {
         pump.getFlowRate();
+      }
+      break;
+
+      case 'p':
+      {
+        pump.getPumpState(parseInt(command_char[2]));
       }
       break;
 

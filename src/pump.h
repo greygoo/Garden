@@ -10,10 +10,12 @@ class Pump
     void setPump(int pump, bool state);
     void getFlowRate();
     void getTotalVolume();
+    void getPumpState(int pump);
   private:
     unsigned long PumpStart;
     unsigned long PumpStop;
     unsigned long PumpTime;
     double flowRate;
     double totalVolume;
+    bool pumpState[PUMP_NUM];
 };
