@@ -42,5 +42,7 @@ sd  - print humidity sensor temperature
 se  - print TDS sensor TDS value
 sc  - calibrate TDS sensor
 
-sv - get total volume of flowmeter
-sf - get flowrate from last pump action 
+sv  - get total volume of flowmeter
+sr  - get flow rate from last pump action 
+
+spX - get state of pump X = int

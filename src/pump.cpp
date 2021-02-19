@@ -7,6 +7,8 @@ Pump::Pump()
 {
   sr.set(PUMP0_PORT, HIGH);
   sr.set(PUMP1_PORT, HIGH);
+  pumpState[0] = 0;
+  pumpState[1] = 0;
 }
 
 
@@ -21,10 +23,12 @@ void Pump::setPump(int pump, bool state)
   {
     case 0:
       sr.set(PUMP0_PORT, !state);
+      pumpState[pump] = state;
     break;
 
     case 1:
       sr.set(PUMP1_PORT, !state);
+      pumpState[pump] = state;
     break;
 
     default:
@@ -61,4 +65,12 @@ void Pump::getTotalVolume()
   Serial.print("Total Volume: ");
   Serial.print(this->totalVolume);
   Serial.println(" l");
+}
+
+void Pump::getPumpState(int pump)
+{
+  Serial.print("Pump ");
+  Serial.print(pump);
+  Serial.print(": ");
+  Serial.println(pumpState[pump]);
 }
