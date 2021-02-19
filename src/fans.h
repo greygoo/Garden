@@ -9,7 +9,8 @@ class Fan
     Fan();
     void setFan(int fan, bool state);
     void setFanSpeed(int fan_pwm_pin, float dutyCycle);
+    void getFanState(int fan);
   private:
     bool initialized;
-    //TimerOne TimerO;
+    bool fanState[FAN_NUM];
 };

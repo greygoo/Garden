@@ -4,6 +4,10 @@
 Fan::Fan()
 {
   initialized = 0;
+  for(int i=0; i<=FAN_NUM; i++)
+  {
+    fanState[i] = 0;
+  } 
   pinMode(CFAN0_PIN, OUTPUT);
   setFanSpeed(CFAN0_PIN, CFAN0_CYCLE); // set fan0 to initial speed
 }
@@ -14,14 +18,17 @@ void Fan::setFan(int fan, bool state)
   {
     case 0:
       sr.set(CFAN0_PORT, !state);
+      fanState[fan] = state;
     break;
 
     case 1:
       sr.set(SFAN0_PORT, !state);
+      fanState[fan] = state;
     break;
 
     case 2:
       sr.set(SFAN1_PORT, !state);
+      fanState[fan] = state;
     break;
 
     default:
@@ -40,4 +47,13 @@ void Fan::setFanSpeed(int fan_pwm_pin, float dutyCycle)
   D_PRINTLN((String)"D: duty: "+(String)duty);
   Timer1.pwm(fan_pwm_pin, int(duty));
   D_PRINTLN((String)"D: CFan pwm cycle set to "+(String)dutyCycle+(String)" on pin "+(String)fan_pwm_pin);
+}
+
+
+void Fan::getFanState(int fan)
+{
+  Serial.print("Fan ");
+  Serial.print(fan);
+  Serial.print(": ");
+  Serial.println(fanState[fan]);
 }
