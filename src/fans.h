@@ -10,7 +10,9 @@ class Fan
     void setFan(int fan, bool state);
     void setFanSpeed(int fan_pwm_pin, float dutyCycle);
     void getFanState(int fan);
+    void getFanSpeed();
   private:
     bool initialized;
     bool fanState[FAN_NUM];
+    int fanSpeed;
 };

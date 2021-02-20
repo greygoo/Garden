@@ -62,7 +62,7 @@ void handleCommand(String command)
       {
         int fan_speed = (parseInt(command_char[2]) * 10) + parseInt(command_char[3]);
         D_PRINTLN((String)"D: fanSpeed: "+(String)fan_speed);
-        if (fan_speed >= 0 && fan_speed <= '99') {
+        if (fan_speed >= 0 && fan_speed <= 99) {
           fan.setFanSpeed(CFAN0_PIN, fan_speed);
         }
         else {
@@ -150,6 +150,12 @@ void handleCommand(String command)
       case 'l':
       {
         light.getLightState(parseInt(command_char[2]));
+      }
+      break;
+
+      case 's':
+      {
+        fan.getFanSpeed();
       }
       break;
 

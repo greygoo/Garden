@@ -10,6 +10,7 @@ Fan::Fan()
   }
   pinMode(CFAN0_PIN, OUTPUT);
   setFanSpeed(CFAN0_PIN, CFAN0_CYCLE); // set fan0 to initial speed
+  fanSpeed = CFAN0_CYCLE;
 }
 
 void Fan::setFan(int fan, bool state)
@@ -46,6 +47,7 @@ void Fan::setFanSpeed(int fan_pwm_pin, float dutyCycle)
   float duty = (dutyCycle / 100) * 1023;
   D_PRINTLN((String)"D: duty: "+(String)duty);
   Timer1.pwm(fan_pwm_pin, int(duty));
+  fanSpeed = dutyCycle;
   D_PRINTLN((String)"D: CFan pwm cycle set to "+(String)dutyCycle+(String)" on pin "+(String)fan_pwm_pin);
 }
 
@@ -56,4 +58,11 @@ void Fan::getFanState(int fan)
   Serial.print(fan);
   Serial.print(": ");
   Serial.println(fanState[fan]);
+}
+
+
+void Fan::getFanSpeed()
+{
+  Serial.print("Fan Speed: ");
+  Serial.println(fanSpeed);
 }
