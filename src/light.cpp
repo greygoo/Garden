@@ -8,6 +8,7 @@ UnitecRCSwitch mySwitch;
 
 Light::Light()
 {
+  D_PRINTLN((String)"Lights initialized");
   for (int i = 0; i <= LIGHT_NUM; i++)
   {
     lightState[i] = 0;
@@ -16,7 +17,7 @@ Light::Light()
   powerSwitch.enableTransmit(RF_PIN);
   powerSwitch.setProtocol(1);
   #elif LIGHT_REMOTE
-  codes = {
+  UnitecRCSwitch::ButtonCodes codes = {
     {4200304, 4467632, 4641840, 4853312}, // Button A ON codes
     {4836384, 4450832, 4993424, 4345248}, // Button A OFF codes
     {4467636, 4200308, 4853316, 4641844}, // Button B ON codes
@@ -27,7 +28,7 @@ Light::Light()
     {4641842, 4853314, 4200306, 4467634}, // Button D OFF codes
   };
   mySwitch.setBtnCodes(&codes);
-  mySwitch.enableTransmit(RF_PIN);
+  mySwitch.enableTransmit(10);
   #endif
 }
 
@@ -40,13 +41,13 @@ void Light::setLight(int light, int state)
       switch(state)
       {
         case 0:
-          lightOff();
+	  Light::lightOff();
           lightState[light] = state;
           D_PRINTLN((String)"D: Light 0 set to: 0");
         break;
 
         case 1:
-          lightOn();
+	  Light::lightOn();
           lightState[light] = state;
           D_PRINTLN((String)"D: Light 0 set to: 1");
         break;
@@ -79,7 +80,7 @@ void Light::lightOn()
   powerSwitch.sendTriState("00000F000FFF");
   D_PRINTLN((String)"D: Sent TriState On ");
   #elif LIGHT_REMOTE
-  mySwitch.switchOn(UnitecRCSwitch::SOCKET_A);                                                                    
+  mySwitch.switchOn(UnitecRCSwitch::SOCKET_A);
   D_PRINTLN((String)"D: Sent Unitec On ");
   #endif
 }

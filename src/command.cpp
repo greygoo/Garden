@@ -2,7 +2,7 @@
 
 Pump pump;
 Fan fan;
-Light light;
+//Light light;
 Humidity humidity;
 
 
@@ -38,6 +38,7 @@ void handleCommand(String command)
   command.toCharArray(command_char, command_length);
   if (command_char[0] == 'c')
   {
+    Light light;
     switch (command_char[1])
     {
       case 'l':
@@ -90,6 +91,7 @@ void handleCommand(String command)
   }
   if (command_char[0] == 's')
   {
+    Light light;
     switch (command_char[1])
     {
       case 't':
