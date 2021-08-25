@@ -28,7 +28,7 @@ Light::Light()
     {4641842, 4853314, 4200306, 4467634}, // Button D OFF codes
   };
   mySwitch.setBtnCodes(&codes);
-  mySwitch.enableTransmit(10);
+  mySwitch.enableTransmit(RF_PIN);
   #endif
 }
 
