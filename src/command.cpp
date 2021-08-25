@@ -3,7 +3,23 @@
 Pump pump;
 Fan fan;
 //Light light;
+Door door;
 Humidity humidity;
+
+void handleDoor()
+{
+    bool lastState = door.doorState;
+    door.getDoorState();
+    //D_PRINTLN((String)"state "+lastState);
+    //D_PRINTLN((String)"doorState "+this->doorState);
+    //D_PRINTLN((String)"");
+    if (lastState != door.doorState)
+    {
+        D_PRINTLN((String)"Door state changed to "+door.doorState);
+        Light light;
+        light.setLight(DOOR_LIGHT, !door.doorState);
+    }
+}
 
 
 void handleSerial()

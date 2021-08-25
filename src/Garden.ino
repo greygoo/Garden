@@ -2,13 +2,11 @@
 #include "sensors.h"
 #include "tds.h"
 #include "command.h"
-#include "door.h"
 
 
 sensorValues currentValues = { 0,0,0,0,0,0,0 };
 ShiftRegister74HC595<1> sr(DATA_PIN, CLOCK_PIN, LATCH_PIN);
 Temp temp;
-Door door;
 
 
 void setup()
@@ -26,6 +24,6 @@ void setup()
 void loop()
 {
   handleSerial();
-  door.handleDoor();
+  handleDoor();
   //delay(1000);
 }
