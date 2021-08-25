@@ -36,6 +36,7 @@
 
 // Door sensor config
 #define DOOR_PIN      14 
+#define DOOR_LIGHT    1 
 
 // RF switch config for RF plugs
 # define RF_PIN       10

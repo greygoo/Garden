@@ -4,6 +4,8 @@
 #include "define.h"
 #include "common.h"
 
+#ifndef MY_LIGHT_H
+#define MY_LIGHT_H
 
 class Light
 {
@@ -17,3 +19,5 @@ class Light
     void lightOn();
     void lightOff();
 };
+
+#endif
